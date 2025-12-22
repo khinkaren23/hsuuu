@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SNS</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="anispot.css" />
+  </head>
+
+  <body id="index">
+    <!-- 上部ヘッダー -->
+    <header>
+      <div class="tabs">
+        <span class="active">フォロー中</span>
+        <span>あなたへのおすすめ</span>
+      </div>
+
+      <!-- 🔍 検索バー（右上） -->
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="検索..." />
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </header>
+
+    <!-- hidden inputs + モーダル群 -->
+    <input type="file" id="imagePicker" accept="image/*" multiple style="display:none" />
+    <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none">
+
+    <!-- リポスト（シェア）モーダル -->
+    <div id="repostModal" class="modal">
+      <div class="modal-content">
+        <h3>リポスト</h3>
+        <p>この投稿をリポストしますか？</p>
+        <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
+          <button id="confirmRepostBtn">はい</button>
+          <button id="cancelRepostBtn">キャンセル</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 📌 投稿削除モーダル（追加した部分） -->
+    <div id="deleteModal" class="modal">
+      <div class="modal-content">
+        <h3>投稿を削除</h3>
+        <p>この投稿を削除しますか？</p>
+        <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
+          <button id="confirmDeleteBtn">削除</button>
+          <button id="cancelDeleteBtn">キャンセル</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- 投稿入力エリア -->
+    <section class="post-input">
+      <div class="user-info">
+        <img src="https://placekitten.com/80/80" alt="avatar" class="avatar" id="myProfileIcon" data-username="you"/>
+        <div>
+          <a id="currentUserLink" href="#" style="text-decoration: none; color: inherit;">
+            <strong id="currentUserName">ユーザー名</strong>
+          </a>
+        </div>
+      </div>
+
+      <textarea id="postText" placeholder="今どうしてる？" style="width: 100%; border: none; outline: none; resize: none; margin-top: 10px; font-family: inherit;"></textarea>
+
+      <div class="post-icons">
+        <i class="fa-regular fa-image" style="cursor: pointer;"></i>
+        <i class="fa-solid fa-camera" style="cursor: pointer;"></i>
+        <i class="fa-solid fa-location-dot" style="cursor: pointer;"></i>
+      </div>
+
+      <button id="submitPostBtn" class="post-btn">投稿する</button>
+    </section>
+
+    <!-- 画像プレビュー -->
+    <div id="imagePreviewContainer" class="image-preview-container" style="display:none;">
+      <div id="imagePreviewList" class="image-preview-list"></div>
+    </div>
+
+    <!-- 投稿フィード -->
+    <main id="feed"></main>
+
+    <!-- コメントモーダル -->
+    <div id="commentModal" class="modal">
+      <div class="modal-content" id="commentModalContent">
+        <h3>コメントを入力</h3>
+        <textarea id="commentText" placeholder="コメントを入力..."></textarea>
+        <div class="modal-actions">
+          <button id="sendComment">送信</button>
+          <button id="closeModal">閉じる</button>
+        </div>
+        <div id="commentList"></div>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <button class="icon" onclick="location.href='home.html'"><img src="img/a.png"></button>
+      <button class="icon" onclick="location.href='aaa.html'"><img src="img/ar.png"></button>
+      <button class="icon active" onclick="location.href='index.html'"><img src="img/c2.png"></button>
+      <button class="icon" onclick="location.href='notifications.html'"><img src="img/d.png"></button>
+      <button class="icon" onclick="location.href='account.html'"><img src="img/e.png"></button>
+    </div>
+
+    <script type="module" src="App.js"></script>
+  </body>
+</html>
+
+
+
+
+

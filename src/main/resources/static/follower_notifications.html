@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>フォロワー通知 - Anispot</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="profile.css">
+  <script defer src="follower_notifications.js"></script>
+</head>
+
+<body>
+<header class="post-header-back">
+  <i id="backBtn" class="fa-solid fa-arrow-left"></i>
+  <h2>フォロワー</h2>
+</header>
+
+<main class="notify-list" id="list">
+  <!-- JS で自動生成 -->
+</main>
+
+<div class="bottom-nav">
+  <button class="icon" onclick="location.href='home.html'"><img src="img/a.png"></button>
+  <button class="icon" onclick="location.href='aaa.html'"><img src="img/ar.png"></button>
+  <button class="icon active" onclick="location.href='index.html'"><img src="img/c2.png"></button>
+  <button class="icon" onclick="location.href='notifications.html'"><img src="img/d.png"></button>
+  <button class="icon" onclick="location.href='account.html'"><img src="img/e.png"></button>
+</div>
+
+<script>
+document.getElementById("backBtn").addEventListener("click", () => {
+  window.location.href = "notifications.html";
+});
+</script>
+
+</body>
+</html>
+

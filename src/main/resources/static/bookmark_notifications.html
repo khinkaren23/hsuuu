@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>保存済みリスト - Anispot</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="profile.css">
+  <script defer src="bookmark_notifications.js"></script>
+</head>
+
+
+
+<body>
+<header class="post-header-back">
+  <i id="backBtn" class="fa-solid fa-arrow-left"></i>
+  <h2>保存済みリスト</h2>
+</header>
+
+<main class="notify-list" id="bookmarkList">
+  
+</main>
+
+<div class="bottom-nav">
+  <button class="icon" onclick="location.href='home.html'"><img src="img/a.png"></button>
+  <button class="icon" onclick="location.href='aaa.html'"><img src="img/ar.png"></button>
+  <button class="icon active" onclick="location.href='index.html'"><img src="img/c2.png"></button>
+  <button class="icon" onclick="location.href='notifications.html'"><img src="img/d.png"></button>
+  <button class="icon" onclick="location.href='account.html'"><img src="img/e.png"></button>
+</div>
+
+<script>
+document.getElementById("backBtn").addEventListener("click", () => {
+  window.location.href = "notifications.html";  
+});
+</script>
+
+
+<div id="postModal" class="post-modal">
+  <div class="post-modal-content">
+    <span id="closeModal" class="close-modal">&times;</span>
+
+    <img id="modalImage" src="" class="modal-image">
+    <p id="modalCaption" class="modal-caption"></p>
+    <p id="modalUser" class="modal-user"></p>
+  </div>
+</div>
+
+
+</body>
+</html>

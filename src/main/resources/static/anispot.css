@@ -1,0 +1,1333 @@
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
+
+
+
+/* body */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Zen Maru Gothic", sans-serif;
+    }
+    body {
+        background: linear-gradient(125deg, #168af7,  #e1eefc, #88bdf6);
+        flex-direction: column;
+        height: 100%;
+        min-height: 100vh;
+        padding-top: 180px;
+        padding-bottom: 180px;
+    }
+
+/* header nav */
+
+    header {
+      position: fixed;
+      top: -0.1%;
+      width: 100%;
+      padding: 50px 15px 15px;
+      font-size: 15px;
+      background-color: #dbe9ed;
+      border-radius:  0 0 20px 20px;
+      z-index: 100;
+    }
+
+/* bottom nav */
+
+    .bottom-nav {
+      position: fixed;
+      bottom: -0.1%;
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      background-color: #dbe9ed;
+      padding: 30px 0;
+      border-radius: 20px 20px 0 0;
+      z-index: 100;
+    }
+    .bottom-nav button {
+      border: none;
+      background: none;
+      padding: 0;
+      cursor: pointer;
+    }
+    .icon img{
+      width: 25px;
+      height: 25px;
+      z-index: 100;
+    }
+
+/* home.html */
+
+    #home .APP{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #home .APP button{
+      border: none;
+      background: none;
+      padding: 0;
+      cursor: pointer;
+    }
+    #home .left {
+      display: flex;
+      align-items: center;
+    }
+    #home .appicon img {
+      width: 45px;
+      height: 45px;
+      margin-right: 10px;
+    }
+    #home .appname {
+      font-size: 25px;
+      font-weight: bold;
+      color: #2164d6;
+      text-shadow: 1px 1px #2164d6;;
+    }
+    #home .header .icon img {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+    #home .tabs{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      gap: 10px;
+      padding-top: 30px;
+    }
+    #home .status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 14px;
+      background-color: #ffffff;
+      color: #000;
+      cursor: pointer;
+    }
+    #home .status.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 14px;
+      background-color: #1286da;
+      color: #fff;
+    }
+    #home .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 100%;
+      padding: 30px 30px 30px 30px;
+      justify-content: center;
+    }
+    #home .card {
+      background-color: #e8e8e8;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #555;
+      aspect-ratio: 2/3;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+    #home .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    #home .cardtitle {
+      display: flex;
+      color: #333;
+      font-weight: 700;
+    }
+
+/* search.html */
+
+    #search .APP {
+      display: flex;
+      align-items: center;
+    }
+    #search .APP button{
+      border: none;
+      background: none;
+      padding: 0;
+      cursor: pointer;
+    }
+    #search .appicon img {
+      width: 45px;
+      height: 45px;
+      margin-right: 10px;
+    }
+    #search .appname {
+      font-size: 25px;
+      font-family:"Shrikhand", serif;
+    }
+    #search .header .icon img {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+    #search .tabs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      gap: 10px;
+      padding-top: 30px;
+    }
+    #search .status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 14px;
+      background-color: #ffffff;
+      color: #000;
+      cursor: pointer;
+    }
+    #search .status.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 14px;
+      background-color: #1286da;
+      color: #fff;
+    }
+    #search .search {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 30px 30px 30px 30px;
+    }
+    #search .icon{
+        width: 35px;
+        height: 35px;
+    }
+    #search .search-box{
+        width: 200px;
+        height: 30px;
+        padding: 0px;
+        font-size: 15px;
+        border: 0px solid #000000;
+        border-radius: 10px;
+        background-color: #ffffff;
+        outline: none;
+    }
+    #search .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 100%;
+      padding: 20px;
+    }
+    #search .category{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align:center;
+      border: none;
+      border-radius: 20px;
+      padding: 10px;
+      margin:30px auto 10px auto;
+      width:fit-content;
+      background-color: #696969;
+      color: #ffffff;
+    }
+    #search .card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #555;
+      aspect-ratio: 7/3;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+    #search .cardtitle {
+      display: flex;
+      color: #333;
+      font-weight: 600;
+    }
+
+    #targeArea{
+        display: none;
+    }
+    #search-result__list span{
+        display: block;
+    }
+
+/* genre.html */
+
+    #genre .APP {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #genre .APP button{
+      border: none;
+      background: none;
+      padding: 0;
+      cursor: pointer;
+    }
+    #genre .left {
+      display: flex;
+      align-items: center;
+    }
+    #genre .appicon img {
+      width: 45px;
+      height: 45px;
+      margin-right: 10px;
+    }
+    #genre .appname {
+      font-size: 25px;
+      font-family:"Shrikhand", serif;
+    }
+    #genre .header .icon img {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+    #genre .tabs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      gap: 10px;
+      padding-top: 30px;
+    }
+    #genre .status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 14px;
+      background-color: #ffffff;
+      color: #000;
+      cursor: pointer;
+    }
+    #genre .status.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 14px;
+      background-color: #1286da;
+      color: #fff;
+    }
+    #genre .category{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align:center;
+      border: none;
+      border-radius: 20px;
+      padding: 10px;
+      margin:30px auto 10px auto;
+      width:fit-content;
+      background-color: #696969;
+      color: #ffffff;
+    }
+    #genre .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 100%;
+      padding: 30px 30px 30px 30px;
+      justify-content: center;
+    }
+    #genre .card {
+      background-color: #e8e8e8;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #555;
+      aspect-ratio: 2/3;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+    #genre .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    #genre .cardtitle {
+      display: flex;
+      color: #333;
+      font-weight: 700;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* index.html */
+
+    /*検索バー（右上アイコンサイズに合わせた） */
+    #index .search-container {
+      position: absolute !important;
+      top: 8px !important;
+      right: 12px !important;
+      width: 14% !important;
+      height: 22px !important;
+      background-color: white !important;
+      border-radius: 10px !important;
+      padding: 0 6px !important;
+      display: flex !important;
+      align-items: center !important;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.15) !important;
+    }
+    #index .search-container input {
+      width: 100% !important;
+      height: 18px !important;
+      font-size: 9px !important;
+      border: none !important;
+      outline: none !important;
+      padding-left: 3px !important;
+    }
+    #index .search-container i {
+      font-size: 12px !important;
+      margin-left: 4px !important;
+    }
+
+    /* 💬 コメントモーダル */
+    #index .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    #index .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    #index .modal-content textarea {
+      width: 100%;
+      height: 80px;
+      resize: none;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+    #index .modal-actions button {
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    #index #sendComment {
+      background: #5ca9ff;
+      color: #fff;
+    }
+    #index #closeModal {
+      background: #ccc;
+      color: #333;
+    }
+    #index #addBtn {
+      font-size: 42px;
+      background: #ff7b00;
+      color: white;
+      padding: 18px 22px;
+      border-radius: 50%;
+      margin-top: -32px;
+      box-shadow: 0 4px 12px rgba(255, 123, 0, 0.4);
+      cursor: pointer;
+    }
+
+    /* SNS画面ヘッダー用 */
+    #index .sns-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    #index .search-icon {
+      font-size: 20px;
+      color: #555;
+      cursor: pointer;
+    }
+    #index .large-nav {
+      height: 90px !important;
+    }
+    #index .large-nav a,
+    #index .large-nav i {
+      font-size: 90px !important;
+    }
+    #index .large-nav #addBtn {
+      font-size: 42px !important;
+      margin-top: -32px !important;
+      padding: 18px 22px !important;
+    }
+    #index .fa-heart.liked {
+      color: #ff4d4d;
+      transition: 0.2s ease;
+    }
+
+    /* 投稿フィード */
+    #index .post {
+      background: #fff;
+      margin: 12px;
+      padding: 12px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    #index .post-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #index .post-header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    #index .post-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+      margin-top: 8px;
+    }
+    #index .post-images img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    #index .post-actions {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 8px;
+      font-size: 16px;
+      color: #555;
+    }
+    #index .post-actions i {
+      cursor: pointer;
+    }
+
+    /* 🖼 画像プレビュー横スクロール */
+    #index .image-preview-container {
+      background: #fff;
+      margin: 10px;
+      padding: 8px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    #index .image-preview-list {
+      display: flex;
+      gap: 8px;
+    }
+    #index .image-preview-item {
+      position: relative;
+    }
+    #index .image-preview-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    #index .remove-img-btn {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      font-size: 12px;
+      text-align: center;
+      line-height: 18px;
+      cursor: pointer;
+    }
+
+    /* 投稿入力 */
+    #index .post-input {
+      background: #fff;
+      margin: 10px;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    #index .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #index .user-info .avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+    }
+    #index .post-icons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+      color: #666;
+    }
+
+/* notifications.html */
+
+    /* 通知画面 */
+    #notifications .notify-container {
+      margin: 20px 12px;
+    }
+    #notifications .notify-item {
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px 20px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 17px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    #notifications .notify-item i {
+      font-size: 22px;
+      color: #555;
+    }
+
+/* account.html */
+
+    /* アカウント画面 */
+    #account .account-container {
+          text-align: center;
+          padding: 30px 20px;
+        }
+    #account .avatar-large {
+          width: 140px;
+          height: 140px;
+          background: #ddd;
+          border-radius: 50%;
+          margin: 20px auto 12px;
+        }
+    #account .menu-list {
+          list-style: none;
+          padding: 0;
+          margin: 26px 0;
+          width: 100%;
+        }
+    #account .menu-list li {
+          background: #fff;
+          margin: 14px auto;
+          padding: 20px 26px;
+          border-radius: 14px;
+          width: 80%;
+          font-size: 18px;
+          box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+          text-align: left;
+        }
+    #account .logout-btn {
+          display: block;
+          margin: 22px auto 0;
+          background: #ff7b00;
+          color: #fff;
+          border: none;
+          padding: 14px 36px;
+          border-radius: 24px;
+          font-size: 18px;
+          cursor: pointer;
+        }
+
+/* post.html */
+
+    /* post.html専用 */
+    #post body.post-page {
+      padding: 16px;
+      margin: 0;
+    }
+
+    #post .post-container {
+        padding:15px;
+        max-width:650px;
+        margin:0 auto;
+    }
+    #post .post-header-back {
+        display:flex;
+        align-items:center;
+        gap:12px;
+        padding:10px 15px;
+        border-bottom:1px solid #ddd;
+    }
+    #post .post-header-back i {
+        font-size:22px;
+        cursor:pointer;
+    }
+    #postText {
+         width:100%;
+         height:120px;
+         margin-top:10px;
+         padding:10px;
+         font-size:16px;
+         border-radius:8px;
+         border:1px solid #ccc;
+         resize:none;
+     }
+    #post .post-actions-row {
+         display:flex;
+         gap:25px;
+         font-size:22px;
+         padding:15px 10px;
+     }
+    #submitPostBtn {
+        margin-top:20px;
+        padding:12px 20px;
+        width:100%;
+        border:none;
+        font-size:17px;
+        border-radius:8px;
+        background:#ff7b00;
+        color:#fff;
+        cursor:pointer;
+    }
+    #imagePreviewContainer {
+        display:none;
+        margin-top:10px;
+    }
+    #imagePreviewList {
+        display:flex;
+        flex-wrap:wrap;
+        gap:6px;
+    }
+    #post .image-preview-item {
+        position:relative;
+    }
+    #post .image-preview-item img {
+        width:90px;
+        height:90px;
+        object-fit:cover;
+        border-radius:8px;
+    }
+    #post .remove-img-btn {
+        position:absolute;
+        top:-5px;
+        right:-5px;
+        background:#ff4d4d;
+        color:#fff; width:22px;
+        height:22px;
+        border-radius:50%;
+        text-align:center;
+        line-height:22px;
+        cursor:pointer;
+        font-size:14px;
+    }
+
+/* .html */
+
+    #index header .tabs,
+    #notifications header .tabs,
+    #account header .tabs,
+    #post header .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      font-size: 15px;
+    }
+
+    #index header .tabs span,
+    #notifications header .tabs span,
+    #account header .tabs span,
+    #post header .tabs span {
+      cursor: pointer;
+      color: #555;
+    }
+
+    #index header .tabs span.active,
+    #notifications header .tabs span.active,
+    #account header .tabs span.active,
+    #post header .tabs span.active {
+      color: #ff7b00;
+      border-bottom: 2px solid #ff7b00;
+      padding-bottom: 4px;
+    }
+
+
+    /* スマホ専用（430px以下) */
+    @media (max-width: 430px) {
+
+      #account .account-container {
+        padding: 20px 12px;
+      }
+      #account .avatar-large {
+        width: 110px;
+        height: 110px;
+        margin-top: 10px;
+      }
+      #account .menu-list li {
+        width: 94%;
+        padding: 16px 20px;
+        font-size: 16px;
+      }
+      #account .logout-btn {
+        padding: 12px 28px;
+        font-size: 16px;
+      }
+      #account .notify-item {
+        width: 94%;
+        padding: 14px 16px;
+        font-size: 16px;
+        min-height: 54px;
+      }
+    }
+
+    /* ===== 録音/波形UI用スタイル ===== */
+
+    /* 録音ボタン類 */
+    #recStartBtn,
+    #recStopBtn,
+    #audioCloseBtn {
+      background: #ff7b00;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #recStopBtn[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+    /* 録音タイマー */
+    #recTimer {
+      font-size: 16px;
+      color: #333;
+    }
+    /* 録音カード（feedや録音一覧に表示される） */
+    .audio-post {
+      background: #fff;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    /* 再生コントロール行 */
+    .audio-control {
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    /* play/pause ボタン */
+    .audio-play-btn {
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:#5ca9ff;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-weight:700;
+      box-shadow:0 4px 12px rgba(92,169,255,0.25);
+    }
+    /* 波形コンテナ */
+    .waveform {
+      display:flex;
+      align-items:center;
+      gap:4px;
+      height:32px;
+      width:220px;
+      overflow:hidden;
+    }
+    /* 棒1本のスタイル */
+    .waveform .bar {
+      width:3.5px;
+      background: #ddd;
+      border-radius:2px;
+      height:8px;
+      transform-origin: bottom center;
+      animation: wave-idle 1s linear infinite;
+      animation-play-state: paused;
+    }
+    /* アニメーション（再生中に running） */
+    .waveform.playing .bar {
+      background: linear-gradient(180deg, #ffb37a, #ff7b00);
+      animation-play-state: running;
+    }
+    /* バーごとに少し時間ずらす（臨場感） */
+    .waveform .bar:nth-child(1){ animation-duration:0.8s; animation-delay:0s; }
+    .waveform .bar:nth-child(2){ animation-duration:0.9s; animation-delay:0.05s; }
+    .waveform .bar:nth-child(3){ animation-duration:1.05s; animation-delay:0.1s; }
+    .waveform .bar:nth-child(4){ animation-duration:0.85s; animation-delay:0.03s; }
+    .waveform .bar:nth-child(5){ animation-duration:0.95s; animation-delay:0.07s; }
+    .waveform .bar:nth-child(6){ animation-duration:1.1s; animation-delay:0.02s; }
+    .waveform .bar:nth-child(7){ animation-duration:0.9s; animation-delay:0.06s; }
+    .waveform .bar:nth-child(8){ animation-duration:0.8s; animation-delay:0.04s; }
+    .waveform .bar:nth-child(9){ animation-duration:1.0s; animation-delay:0.08s; }
+    .waveform .bar:nth-child(10){ animation-duration:0.92s; animation-delay:0.01s; }
+    /* idleアニメーション（高さ変化） */
+    @keyframes wave-idle {
+      0% { transform: scaleY(0.35); }
+      50% { transform: scaleY(1.0); }
+      100% { transform: scaleY(0.35); }
+    }
+    /* 再生時間テキスト */
+    .audio-duration {
+      font-size:13px;
+      color:#666;
+    }
+    /* 小さめの audio element（非表示 or 0サイズで使う）*/
+    .hidden-audio {
+      display:none;
+    }
+    /* 🎧 録音プレビューカード */
+    .audio-preview-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin: 16px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .audio-preview-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 8px;
+    }
+    .audio-preview-card audio {
+      width: 100%;
+      margin: 8px 0;
+    }
+    .audio-preview-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .delete-btn {
+      background: #ff6b6b;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .delete-btn:hover {
+      background: #ff3b3b;
+    }
+
+    /* ====== ピン留めオーディオプレビュー（画面上部） ====== */
+    .pinned-audio {
+      position: sticky;
+      top: 56px; /* header 高さに合わせて調整 */
+      left: 0;
+      right: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(250,250,250,0.95));
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 8px 12px;
+      z-index: 1200;
+      display:flex;
+      justify-content:center;
+    }
+    .pinned-row {
+      width: 95%;
+      max-width: 960px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    /* basic play button */
+    .audio-play-btn {
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background:#5ca9ff;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      cursor:pointer;
+      border:none;
+      box-shadow:0 4px 10px rgba(92,169,255,0.22);
+    }
+
+    /* post now button */
+    .post-btn {
+      margin-left:auto;
+      background:#ff7b00;
+      color:#fff;
+      border:none;
+      padding:8px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:600;
+    }
+
+    /* delete */
+    .delete-btn {
+      background:#ff6b6b;
+      color:#fff;
+      border:none;
+      padding:6px 10px;
+      border-radius:8px;
+      cursor:pointer;
+    }
+
+    /* waveform */
+    .waveform {
+      display:flex;
+      align-items:center;
+      gap:4px;
+      height:36px;
+      width:260px;
+      overflow:hidden;
+    }
+    .waveform .bar {
+      width:4px;
+      border-radius:2px;
+      transform-origin: bottom center;
+      animation: wave-idle 1s linear infinite;
+      animation-play-state: paused;
+    }
+
+    /* colorful look */
+    .waveform.colorful .bar {
+      background: linear-gradient(180deg,#ffd7a6,#ff7b00);
+    }
+
+    /* running state */
+    .waveform.playing .bar { animation-play-state: running; }
+
+    /* stagger durations for lively effect */
+    .waveform .bar:nth-child(1){ animation-duration:0.85s; animation-delay:0s; }
+    .waveform .bar:nth-child(2){ animation-duration:0.95s; animation-delay:0.05s; }
+    .waveform .bar:nth-child(3){ animation-duration:1.05s; animation-delay:0.02s; }
+    .waveform .bar:nth-child(4){ animation-duration:0.9s; animation-delay:0.07s; }
+    .waveform .bar:nth-child(5){ animation-duration:1.1s; animation-delay:0.03s; }
+    .waveform .bar:nth-child(6){ animation-duration:0.86s; animation-delay:0.06s; }
+    .waveform .bar:nth-child(7){ animation-duration:0.98s; animation-delay:0.01s; }
+    .waveform .bar:nth-child(8){ animation-duration:0.9s; animation-delay:0.04s; }
+    .waveform .bar:nth-child(9){ animation-duration:1.02s; animation-delay:0.08s; }
+    .waveform .bar:nth-child(10){ animation-duration:0.92s; animation-delay:0.02s; }
+
+    @keyframes wave-idle {
+      0% { transform: scaleY(0.35); }
+      50% { transform: scaleY(1.0); }
+      100% { transform: scaleY(0.35); }
+    }
+
+    .audio-duration { font-size:13px; color:#444; margin-left:6px; }
+
+    /* hide native audio */
+    .hidden-audio { display:none; }
+
+    /* small responsive tweaks */
+    @media (max-width:430px) {
+      .pinned-row { gap:8px; }
+      .waveform { width:160px; height:28px; }
+      .audio-play-btn { width:36px; height:36px; }
+      .post-btn { padding:6px 10px; }
+    }
+
+    /* ===== ハッシュタグ候補 ===== */
+    .hashtag-suggestions {
+      position: absolute;
+      background: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      list-style: none;
+      padding: 6px 0;
+      margin: 0;
+      width: 160px;
+      z-index: 3000;
+
+      /* 影で浮かせる（見やすくなる） */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+      /* 初期は非表示 */
+      display: none;
+    }
+    .hashtag-suggestions li {
+      padding: 8px 12px;
+      cursor: pointer;
+      color: #333;
+      font-size: 14px;
+    }
+    .hashtag-suggestions li:hover {
+      background: #f0f0f0;
+    }
+    #addBtn {
+      z-index: 9999 !important;
+      position: relative;
+    }
+
+    /* 投稿入力エリアを画面いっぱいに広げる */
+    body.post-page .post-input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 16px;
+      border-radius: 8px;
+      background: #fff;
+      margin-bottom: 20px;
+    }
+
+    /* 画像プレビューも幅いっぱい */
+    body.post-page .image-preview-container {
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 16px;
+    }
+
+    /* モーダルもスマホに最適化 */
+    body.post-page .modal-content {
+      width: 90%; /* 画面幅の90% */
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* スマホ向けメディアクエリ */
+    @media screen and (max-width: 600px) {
+      body.post-page .post-input {
+        padding: 12px;
+      }
+      body.post-page .post-btn {
+        width: 100%;
+        font-size: 16px;
+      }
+    }
+
+    /* 画像1～5枚まで自動で超キレイに並ぶ（Twitter・Instagramと同じ） */
+    .post-images-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3px;
+      margin: 10px 0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .post-images-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #f0f0f0;
+    }
+
+    /* 1枚のとき → 大きく表示 */
+    .post-images-grid:has(img:nth-child(1):nth-last-child(1)) {
+      grid-template-columns: 1fr;
+    }
+
+    /* 3枚以上のとき → 3列にする（めっちゃカッコいい） */
+    .post-images-grid:has(img:nth-child(3)) ~ * {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* 4枚・5枚も同じ3列でキレイに収まる */
+    .post-images-grid:has(img:nth-child(4)),
+    .post-images-grid:has(img:nth-child(5)) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* ===== Instagram風 コメントレイアウト ===== */
+
+    .ig-comment-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid #333;
+    }
+    .ig-comment-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .ig-comment-body {
+      flex: 1;
+    }
+    .ig-comment-user {
+      color: #fff;
+      font-weight: bold;
+      margin-right: 6px;
+    }
+    .ig-comment-text {
+      color: #ddd;
+      word-break: break-word;
+    }
+    .ig-comment-actions {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 5px;
+      display: flex;
+      gap: 12px;
+    }
+    .ig-comment-likes {
+      cursor: pointer;
+    }
+    .ig-comment-reply {
+      cursor: pointer;
+    }
+    .ig-comment-like-icon {
+      margin-top: 5px;
+      cursor: pointer;
+      font-size: 18px;
+      color: #ddd;
+    }
+    .ig-comment-like-icon.liked {
+      color: #ff4d4d;
+    }
+
+    /* === Instagram風 フルスクリーンコメントモーダル === */
+
+    #commentModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6); /* 画面暗くする */
+      z-index: 3000;
+      justify-content: center;
+      align-items: flex-end; /* 下から出る感じにする */
+    }
+    #commentModal .modal-content {
+      width: 100%;
+      height: 95%;              /* ほぼ全画面 */
+      max-width: none;
+      background: #02a4aaf3;         /* Instagramと同じ黒背景 */
+      color: #fff;
+      border-radius: 18px 18px 0 0; /* 上だけ丸く */
+      padding: 16px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      animation: slideUp 0.25s ease;
+    }
+
+    /* 下からスッと出てくるアニメーション */
+    @keyframes slideUp {
+      from {
+        transform: translateY(100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    /* コメント入力欄 */
+    #commentText {
+      width: 100%;
+      min-height: 70px;
+      resize: none;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #111;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    /* 送信ボタン位置を固定 */
+    #index .modal-actions {
+      position: sticky;
+      bottom: 0;
+      background: #000;
+      padding: 12px 0;
+      text-align: right;
+    }
+    #sendComment,
+    #closeModal {
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #sendComment {
+      background: #0095f6;
+      color: white;
+    }
+    #closeModal {
+      background: #333;
+      color: white;
+    }

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>新しいメール</title>
+  <style>
+    body {
+      background: linear-gradient(132deg, #a0c7eb,  #f6f6f6, #c2d8f0);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+ 
+
+    h1 {
+      font-size: 18px;
+      margin-top: 10%;
+      color: #2164d6;
+      text-shadow: 1px 1px #2164d6;
+      margin-bottom: 15px;
+      
+    }
+    p {
+      font-size: 33px;
+      margin-top: 10%;
+      margin-bottom: 10%;
+      text-align: center;
+    }
+
+    form {
+      width: 100%;
+      background-color: rgba(126, 202, 237, 0.7);
+      padding: 30px;
+      border-radius: 12px;
+      box-sizing: border-box;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 40px 12px 12px;
+      font-size: 24px;
+      border: 1px solid #000000;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    /* Icon luôn nằm giữa ô input */
+    .toggle-password {
+      position: absolute;
+      inset: 0 10px 0 auto; /* top=0 bottom=0 right=10px */
+      margin: auto;         /* căn giữa dọc */
+      cursor: pointer;
+      user-select: none;
+      width: 22px;
+      height: 22px;
+      fill: #002f4d;
+      pointer-events: auto;
+    }
+
+    /* Giữ icon cố định trong input, không bị đẩy khi có error */
+    .error {
+      position: relative;
+      color: red;
+      font-size: 13px;
+      margin-top: 8px;
+      height: 18px; /* luôn giữ chỗ, không làm icon bị lệch */
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 10%;
+    }
+
+    a.button {
+      flex: 1;
+      text-align: center;
+      margin: 0 5px;
+      padding: 14px 0;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 18px;
+      border: 2px solid #002f4d;
+      color: #002f4d;
+      background-color: #fff;
+      transition: all 0.3s ease;
+    }
+  .button.active {
+      background-color: #fff;
+      color: #002f4d;
+    }
+
+    .button:hover {
+      color: #fafafa;
+      background-color: #002f4d;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="screen">
+    <div class="content">
+      <h1>Anispot</h1>
+      <p>新しいメール</p>
+    </div>
+
+    <form id="emailForm">
+      <label>新しいメール</label>
+      <input type="text" id="email1" placeholder="anispot@gmail.com">
+      <div class="error" id="email1Error"></div>
+
+      <label>再入力</label>
+      <input type="text" id="email2" placeholder="anispot@gmail.com">
+      <div class="error" id="email2Error"></div>
+    </form>
+
+    <div class="button-container">
+      <a href="forgotid.html" class="button">戻る</a>
+      <a href="#" class="button active" id="confirmBtn">確認</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("confirmBtn").addEventListener("click", function(event) {
+      event.preventDefault(); // Ngăn chuyển trang
+
+      const email1 = document.getElementById("email1").value.trim();
+      const email2 = document.getElementById("email2").value.trim();
+      let valid = true;
+
+      // reset lỗi
+      document.getElementById("email1Error").textContent = "";
+      document.getElementById("email2Error").textContent = "";
+
+      // Kiểm tra cú pháp email
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailPattern.test(email1)) {
+        document.getElementById("email1Error").textContent = "正しいメールアドレスを入力してください。";
+        valid = false;
+      }
+
+      if (email1 !== email2) {
+        document.getElementById("email2Error").textContent = "メールアドレスが一致しません。";
+        valid = false;
+      }
+
+      // Nếu hợp lệ -> chuyển trang
+      if (valid) {
+        window.location.href = "id.html";
+      }
+    });
+  </script>
+</body>
+</html>

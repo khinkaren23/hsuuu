@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メール忘れ／確認コード</title>
+
+  <style>
+ 
+
+    body {
+      background: linear-gradient(135deg, #a0c7eb,  #e9f1f9, #a5c9ef);
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      
+    }
+
+    .content {
+      text-align: center;
+      padding: 20px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-top: 10%;
+      color: #2164d6;
+      text-shadow: 1px 1px #2164d6;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 23px;
+      margin-top: 20%;
+      margin-bottom: 10%;
+    }
+
+    input {
+      width: 80%;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: 1px solid #060606;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+.button-container {
+  display: flex;
+  justify-content: center; /* để nút nằm giữa */
+  gap: 10%;               /* khoảng cách giữa hai nút */
+  width: 100%;
+  bottom: 20px;
+  left: 0;
+}
+
+.button {
+
+  width: 120px;           /* ⭐ thu nhỏ chiều ngang */
+  padding: 16px 0;
+  margin: 30px;
+  margin-top: 10%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 2px solid #002f4d;
+  text-decoration: none;
+  color: #002f4d;
+  background: #ffffff;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: #002f4d;
+  color: #ffffff;
+}
+
+.active {
+  background: #002f4d;
+  color: #ffffff;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <div class="content">
+    <h1>Anispot</h1>
+    <p>SNSで届いた<br>認証コードを入力してください</p>
+
+    <form id="codeForm" onsubmit="validateCode(event)">
+      <input type="text" id="codeInput" name="number" placeholder="****">
+      <div class="error" id="codeError"></div>
+    </form>
+  </div>
+
+  <div class="button-container">
+    <a href="forgotid.html" class="button">戻る</a>
+    <a href="#" class="button" onclick="validateCode(event)">送信</a>
+  </div>
+
+  <script>
+    function validateCode(event) {
+      event.preventDefault();
+      const codeInput = document.getElementById("codeInput").value.trim();
+      const codeError = document.getElementById("codeError");
+      codeError.textContent = "";
+
+      const pattern = /^\d{4}$/;
+
+      if (!pattern.test(codeInput)) {
+        codeError.textContent = "4桁の数字コードを入力してください";
+      } else {
+        window.location.href = "newid.html";
+      }
+    }
+  </script>
+
+</body>
+</html>

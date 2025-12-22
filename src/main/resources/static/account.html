@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+    <head>
+      <meta charset="UTF-8" />
+      <title>アカウント設定 - Anispot</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+      <link rel="stylesheet" href="anispot.css" />
+      <script defer src="App.js"></script>
+    </head>
+
+    <body id="account">
+      <header>
+        <h2>ユーザー設定</h2>
+      </header>
+
+      <!-- <main class="account-container">
+        <section class="user-section">
+          <div class="avatar-large"></div>
+          <p class="username">Yuji さん</p>
+          <button class="edit-btn">変更</button>
+        </section> -->
+      <main class="account-container">
+        <section class="user-section">
+          <div id="accountAvatar"class="avatar-large"></div>
+          <p id="accountName" class="username">読み込み中...</p>
+          <button class="edit-btn">変更</button>
+        </section>
+
+        <ul class="menu-list">
+          <li>このアプリの使い方</li>
+          <li>よくあるご質問</li>
+          <li>お問い合わせ</li>
+          <li>プライバシーポリシー</li>
+          <li>利用規約</li>
+          <li>同意事項</li>
+          <li>その他の情報</li>
+        </ul>
+
+        <button class="logout-btn">ログアウト</button>
+      </main>
+
+      <!--<nav class="bottom-nav large-nav">
+         <a href="index.html"><i class="fa-solid fa-house"></i></a>
+         <a href="#"><i class="fa-solid fa-location-dot"></i></a>
+         <i class="fa-solid fa-circle-plus" id="addBtn"></i>
+         <a href="notifications.html"><i class="fa-regular fa-bell"></i></a>
+         <a href="account.html"><i class="fa-solid fa-user" style="color:#ff7b00;"></i></a>
+       </nav>-->
+
+      <div class="bottom-nav">
+          <button class="icon" onclick="location.href='home.html'"><img src="img/a.png"></button>
+          <button class="icon" onclick="location.href='aaa.html'"><img src="img/ar.png"></button>
+          <button class="icon" onclick="location.href='index.html'"><img src="img/c.png"></button>
+          <button class="icon" onclick="location.href='notifications.html'"><img src="img/d.png"></button>
+          <button class="icon active" onclick="location.href='account.html'"><img src="img/e2.png"></button>
+      </div>
+
+   </body>
+</html>
+

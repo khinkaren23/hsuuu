@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>投稿 - Anispot</title>
+  <link rel="stylesheet" href="anispot.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <script defer src="App.js"></script>
+  <!--<style>
+    .post-container { padding:15px; max-width:650px; margin:0 auto; }
+    .post-header-back { display:flex; align-items:center; gap:12px; padding:10px 15px; border-bottom:1px solid #ddd; }
+    .post-header-back i { font-size:22px; cursor:pointer; }
+    #postText { width:100%; height:120px; margin-top:10px; padding:10px; font-size:16px; border-radius:8px; border:1px solid #ccc; resize:none; }
+    .post-actions-row { display:flex; gap:25px; font-size:22px; padding:15px 10px; }
+    #submitPostBtn { margin-top:20px; padding:12px 20px; width:100%; border:none; font-size:17px; border-radius:8px; background:#ff7b00; color:#fff; cursor:pointer; }
+    #imagePreviewContainer { display:none; margin-top:10px; }
+    #imagePreviewList { display:flex; flex-wrap:wrap; gap:6px; }
+    .image-preview-item { position:relative; }
+    .image-preview-item img { width:90px; height:90px; object-fit:cover; border-radius:8px; }
+    .remove-img-btn { position:absolute; top:-5px; right:-5px; background:#ff4d4d; color:#fff; width:22px; height:22px; border-radius:50%; text-align:center; line-height:22px; cursor:pointer; font-size:14px; }
+  </style>-->
+</head>
+
+<body id="post">
+  <header class="post-header-back">
+    <i id="backBtn" class="fa-solid fa-arrow-left"></i>
+    <h2>新規ポスト</h2>
+  </header>
+
+  <main class="post-container">
+    <!-- 投稿テキスト -->
+    <textarea id="postText" placeholder="いまどうしてる？"></textarea>
+
+    <!-- 画像プレビュー -->
+    <div id="imagePreviewContainer">
+      <div id="imagePreviewList"></div>
+    </div>
+
+    <!-- 投稿ツールバー -->
+    <div class="post-actions-row">
+      <i class="fa-solid fa-image"></i>
+      <i class="fa-solid fa-camera"></i>
+      <i class="fa-solid fa-location-dot"></i>
+
+    </div>
+
+    <!-- 隠し入力 -->
+    <input type="file" id="imagePicker" accept="image/*" multiple style="display:none">
+    <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none">
+
+    <!-- 投稿ボタン -->
+    <button id="submitPostBtn">投稿する</button>
+  </main>
+
+    <script>
+
+      document.getElementById("backBtn").addEventListener("click", () => {
+      window.location.href = "index.html";
+      });
+
+    </script>
+</body>
+</html>
+

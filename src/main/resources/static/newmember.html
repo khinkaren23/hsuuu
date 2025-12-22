@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新規登録</title>
+<style>
+  body {
+    background: linear-gradient(132deg, #a0c7eb,  #f6f6f6, #c2d8f0);
+    margin: 0;
+    padding: 0;
+    color: #111;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+
+  form {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%; max-width: 400px;
+    margin-top: 40px;
+  }
+ h1{
+      font-size: 15px;
+      margin-top: 10%;
+      color: #2164d6;
+      text-shadow: 1px 1px #2164d6;
+      margin-bottom: 10%;
+}
+  p {
+    text-align: center;
+    font-size: 26px;
+    margin-top: 20px;
+  }
+
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .required::after { content: " ※"; color: red; }
+
+  input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  .button-container {
+    padding-top: 5%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 15%;
+  }
+
+  a.button {
+    flex: 1;
+    text-align: center;
+    margin: 0 5px;
+    padding: 12px 0;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+    border: 2px solid #002f4d;
+    color: #002f4d;
+    background-color: #fff;
+    transition: all 0.3s ease;
+  }
+
+  a.button.active {
+    color: #002f4d;
+    background-color: #fff;
+  }
+
+  a.button:hover { background-color: #d8efff; }
+
+</style>
+</head>
+<body>
+
+<form id="memberForm">
+  <h1>Anispot</h1>
+  <p>新規登録</p>
+
+  <label class="required">氏名</label>
+  <input type="text" id="name" placeholder="鈴木 桜花">
+  <div class="error" id="nameError"></div>
+
+  <label>氏名（フリガナ）</label>
+  <input type="text" id="kana" placeholder="スズキ サクラ">
+  <div class="error" id="kanaError"></div>
+
+  <label class="required">住所</label>
+  <input type="text" id="postal" placeholder="〒000-0000">
+  <div class="error" id="postalError"></div>
+
+  <select id="prefecture">
+    <option value="">都道府県</option>
+    <option>千葉県</option><option>東京都</option><option>神奈川県</option>
+    <option>埼玉県</option><option>大阪府</option><option>長野県</option><option>愛知県</option>
+  </select>
+  <div class="error" id="prefError"></div>
+
+  <input type="text" id="city" placeholder="市区町村">
+  <div class="error" id="cityError"></div>
+
+  <input type="text" id="address" placeholder="番地・建物名">
+  <div class="error" id="addrError"></div>
+
+  <label>電話番号</label>
+  <input type="tel" id="phone" placeholder="000-0000-0000">
+  <div class="error" id="phoneError"></div>
+
+  <label>メールアドレス</label>
+  <input type="email" id="email" placeholder="anispot@gmail.com">
+  <div class="error" id="emailError"></div>
+
+  <label>パスワード</label>
+  <input type="password" id="password" placeholder="********">
+  <div class="error" id="passwordError"></div>
+  <ul style="font-size:12px;">
+    <li>８字以上ください</li>
+    <li>数字を入れてください</li>
+    <li>@*$%&#!+ は使えません</li>
+  </ul>
+
+  <label>パスワードを再入力</label>
+  <input type="password" id="confirmPassword" placeholder="********">
+  <div class="error" id="confirmError"></div>
+
+  <div class="button-container">
+    <a href="login.html" class="button" id="backBtn">戻る</a>
+    <a href="newmbok.html" class="button active" id="submitBtn">送信確認</a>
+  </div>
+</form>
+
+<script>
+document.getElementById("submitBtn").addEventListener("click", function(e) {
+  e.preventDefault();
+
+  let valid = true;
+
+  // Lấy giá trị
+  const name = document.getElementById("name").value.trim();
+  const kana = document.getElementById("kana").value.trim();
+  const postal = document.getElementById("postal").value.trim();
+  const pref = document.getElementById("prefecture").value;
+  const city = document.getElementById("city").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const confirm = document.getElementById("confirmPassword").value;
+
+  // Reset error
+  document.querySelectorAll(".error").forEach(e => e.textContent = "");
+
+  // 1. 氏名チェック（漢字・ローマ字のみ）
+  if (!/^[\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FFa-zA-Z\s]+$/.test(name)) {
+    document.getElementById("nameError").textContent = "正しい氏名（漢字またはローマ字）を入力してください。";
+    valid = false;
+  }
+
+  // 2. フリガナ（カタカナのみ・必須）
+  if (!kana) {
+    document.getElementById("kanaError").textContent = "フリガナを入力してください。";
+    valid = false;
+  } else if (!/^[\u30A0-\u30FF\s]+$/.test(kana)) {
+    document.getElementById("kanaError").textContent = "フリガナはカタカナで入力してください。";
+    valid = false;
+  }
+
+  // 3. 郵便番号（000-0000）
+  const halfWidthPostal = postal.replace(/[０-９－]/g, s =>
+    String.fromCharCode(s.charCodeAt(0) - 0xFEE0)
+  ); // 全角数字を半角に変換
+
+  if (!halfWidthPostal) {
+    document.getElementById("postalError").textContent = "郵便番号を入力してください。";
+    valid = false;
+  } else if (!/^\d{3}-\d{4}$/.test(halfWidthPostal)) {
+    document.getElementById("postalError").textContent = "正しい郵便番号を入力してください。";
+    valid = false;
+  }
+
+
+  // 4. 住所各項目
+  if (!pref) { document.getElementById("prefError").textContent = "都道府県を選択してください。"; valid = false; }
+  if (!city) { document.getElementById("cityError").textContent = "市区町村を入力してください。"; valid = false; }
+  if (!address) { document.getElementById("addrError").textContent = "番地・建物名を入力してください。"; valid = false; }
+
+   // 5. 電話番号（携帯・固定電話両方対応）
+  const halfWidthPhone = phone.replace(/[０-９－]/g, s =>
+    String.fromCharCode(s.charCodeAt(0) - 0xFEE0)
+  ); // 全角→半角
+
+  if (!halfWidthPhone) {
+    document.getElementById("phoneError").textContent = "電話番号を入力してください。";
+    valid = false;
+  } else if (!/^0\d{1,4}\d{1,4}\d{4}$/.test(halfWidthPhone)) {
+    document.getElementById("phoneError").textContent = "正しい電話番号（例：090-1234-5678）を入力してください。";
+    valid = false;
+  }
+
+  // 6. メール
+  if (!email) {
+    document.getElementById("emailError").textContent = "メールアドレスを入力してください。";
+    valid = false;
+  }
+
+  // 7. パスワード
+  const passRegex = /^(?=.*\d)[A-Za-z\d]{8,}$/;
+  if (!passRegex.test(password) || /[@*$%&#!+]/.test(password)) {
+    document.getElementById("passwordError").textContent = "パスワードは8文字以上、数字を含み、記号を含めないでください。";
+    valid = false;
+  }
+
+  // 8. 確認パスワード
+  if (password !== confirm) {
+    document.getElementById("confirmError").textContent = "同じパスワードを入力してください。";
+    valid = false;
+  }
+
+  if (valid) {
+    // 保存 vào session và chuyển trang
+    sessionStorage.setItem("name", name);
+    sessionStorage.setItem("kana", kana);
+    sessionStorage.setItem("address", postal + " " + pref + " " + city + " " + address);
+    sessionStorage.setItem("phone", phone);
+    sessionStorage.setItem("email", email);
+    sessionStorage.setItem("password", password);
+    window.location.href = "newmbok.html";
+  }
+});
+
+document.getElementById("backBtn").addEventListener("click", () => sessionStorage.clear());
+</script>
+
+</body>
+</html>

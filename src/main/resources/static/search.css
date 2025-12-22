@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Zen Maru Gothic", sans-serif;
+}
+
+body {
+    background: linear-gradient(125deg, #168af7,  #e1eefc, #88bdf6);
+    flex-direction: column;
+}
+
+header {
+  position: sticky;
+  top: -0.1%;
+  width: 100%;
+  padding: 50px 15px 15px;
+  font-size: 15px;
+  background-color: #dbe9ed;
+  border-radius:  0 0 20px 20px;
+  z-index: 100;
+}
+
+.APP {
+  display: flex;
+  align-items: center;
+}
+.APP button{
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+.appicon img {
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+}
+.appname {
+  font-size: 25px;
+  font-family:"Shrikhand", serif;
+}
+.header .icon img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding-top: 30px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  background-color: #ffffff;
+  color: #000;
+
+  cursor: pointer;
+}
+
+.status.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  background-color: #1286da;
+  color: #fff;
+}
+
+
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 30px 30px 30px 30px;
+}
+
+.icon{
+    width: 35px;
+    height: 35px;
+}
+
+.search-box{
+    width: 200px;
+    height: 30px;
+    padding: 0px;
+    font-size: 15px;
+    border: 0px solid #000000;
+    border-radius: 10px;
+    background-color: #ffffff;
+
+    outline: none;
+}
+
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
+}
+
+.category{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align:center;
+
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  margin:30px auto 10px auto;
+  width:fit-content;
+  background-color: #696969;
+  color: #ffffff;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #555;
+  aspect-ratio: 7/3;
+
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.cardtitle {
+  display: flex;
+  color: #333;
+  font-weight: 600;
+}
+
+
+
+.bottom-nav {
+  position: fixed;
+  bottom: -0.1%;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #dbe9ed;
+  padding: 30px 0;
+  border-radius: 20px 20px 0 0;
+}
+
+.bottom-nav button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.icon img{
+  width: 25px;
+  height: 25px;
+  z-index: 100;
+}

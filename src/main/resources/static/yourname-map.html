@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>君の名は。スポットマップ (Tokyo)</title>
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    /* Header title */
+    h1 {
+      margin: 0;
+      padding: 10px;
+      font-size: 20px;
+      color: #ffffff;
+      background: #3b82f6; /* blue sky vibe */
+      text-align: center;
+    }
+
+    /* Map container – height set in JS for WebView */
+    #map {
+      width: 100%;
+      background: #000; /* debug background */
+    }
+
+    .popup-title {
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+    .popup-anime {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 8px;
+    }
+    .popup-button {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: #3b82f6;
+      color: white;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>君の名は。スポットマップ</h1>
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  ></script>
+
+  <script>
+  
+    // e.g. "Your Name" or "君の名は"
+    const TARGET_ANIME = "Your Name";
+
+    window.addEventListener("load", function () {
+      const mapDiv = document.getElementById("map");
+      const header = document.querySelector("h1");
+
+      // 🔸 Fullscreen map: screen height - header height
+      const availableHeight = window.innerHeight - (header ? header.offsetHeight : 0);
+      mapDiv.style.height = availableHeight + "px";
+      mapDiv.style.width = "100%";
+
+      // 1. Create map centered on Tokyo
+      const map = L.map("map").setView([35.6804, 139.7690], 12);
+
+      // 2. Add OpenStreetMap tiles
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      // 3. Load spots from Spring Boot and filter by 君の名は
+      fetch("http://10.0.2.2:8080/api/spots")
+        .then(res => res.json())
+        .then(spots => {
+          const ynSpots = spots.filter(s => s.anime === TARGET_ANIME);
+
+          if (ynSpots.length === 0) {
+            alert("まだ『君の名は。』のスポットが登録されていません。DBの anime カラムの値を確認してください。");
+          }
+
+          ynSpots.forEach(spot => {
+            const marker = L.marker([spot.lat, spot.lng]).addTo(map);
+
+            const popupHtml = `
+              <div class="popup">
+                <div class="popup-title">${spot.name}</div>
+                <div class="popup-anime">作品：${spot.anime}</div>
+                <a
+                  class="popup-button"
+                  href="https://www.google.com/maps/dir/?api=1&destination=${spot.lat},${spot.lng}"
+                  target="_blank"
+                >
+                  ここへ行く（Googleマップ）
+                </a>
+              </div>
+            `;
+
+            marker.bindPopup(popupHtml);
+          });
+
+          // Important for Android WebView layout
+          setTimeout(() => {
+            map.invalidateSize();
+          }, 500);
+        })
+        .catch(err => {
+          console.error("Error loading spots:", err);
+          alert("スポット情報の取得に失敗しました。API やネットワークを確認してください。");
+        });
+
+      // 4. (Optional) show user's current location
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const userLat = position.coords.latitude;
+            const userLng = position.coords.longitude;
+
+            const userMarker = L.marker([userLat, userLng]).addTo(map);
+            userMarker.bindPopup("あなたの現在地").openPopup();
+          },
+          (error) => {
+            console.log("現在地を取得できませんでした:", error);
+          }
+        );
+      } else {
+        console.log("このブラウザは位置情報に対応していません。");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>メール忘れ</title>
+  <style>
+ 
+
+    body {
+      background: linear-gradient(135deg, #a0c7eb,  #e9f1f9, #a5c9ef);
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      
+    }
+
+    .content {
+      text-align: center;
+      padding: 20px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-top: 10%;
+      color: #2164d6;
+      text-shadow: 1px 1px #2164d6;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 23px;
+      margin-top: 20%;
+      margin-bottom: 20%;
+    }
+
+    input {
+      width: 90%;
+      padding: 15px;
+      margin-bottom: 20%;
+      border-radius: 8px;
+      border: 1px solid #060606;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+.button-container {
+  display: flex;
+  justify-content: center; /* để nút nằm giữa */
+  gap: 5%;               /* khoảng cách giữa hai nút */
+  width: 100%;
+  bottom: 20px;
+  left: 0;
+}
+
+.button {
+
+  width: 100px;           /* ⭐ thu nhỏ chiều ngang */
+  padding: 18px ;
+  margin: 40px;
+  margin-top: 10%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 2px solid #002f4d;
+  text-decoration: none;
+  color: #002f4d;
+  background: #ffffff;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: #002f4d;
+  color: #ffffff;
+}
+
+.active {
+  background: #002f4d;
+  color: #ffffff;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="screen">
+    <!-- Nội dung căn giữa -->
+    <div class="content">
+      <h1>Anispot</h1>
+      <p>電話番号を記入してください</p>
+        <input type="text" id="phoneInput" name="phone" placeholder="000-0000-0000"><br>
+        <div class="error" id="phoneError"></div>
+      </form>
+    </div>
+
+    <!-- Hai nút ở dưới cùng -->
+    <div class="button-container">
+      <a href="login.html" class="button">戻る</a>
+      <a href="#" class="button" onclick="return validatePhone(event)">送信</a>
+    </div>
+  </div>
+
+  <script>
+    function validatePhone(event) {
+      event.preventDefault();
+      const phone = document.getElementById("phoneInput").value.trim();
+      const error = document.getElementById("phoneError");
+      error.textContent = "";
+
+      // 日本の電話番号形式 (例: 090-1234-5678 / 03-1234-5678)
+      const phoneRegex = /^\d{2,4}-\d{2,4}-\d{3,4}$/;
+
+      if (phone === "") {
+        error.textContent = "電話番号を入力してください。";
+        return false;
+      }
+      if (!phoneRegex.test(phone)) {
+        error.textContent = "正しい電話番号形式ではありません。";
+        return false;
+      }
+
+      // ✅ 正しい場合 → chuyển sang trang kế tiếp
+      window.location.href = "checkid.html";
+    }
+  </script>
+
+</body>
+</html>

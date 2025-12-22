@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>登録内容確認</title>
+  <style>
+     body {
+      background: linear-gradient(132deg, #a0c7eb,  #f6f6f6, #c2d8f0);
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      
+    }
+
+
+    .screen {
+      background-color: #fff;
+      width: 400px;
+      padding: 30px;
+      box-sizing: border-box;
+      border-radius: 15px;
+    }
+
+     h1 {
+      text-align: center;
+      font-size: 48px;
+      margin-top: 10%;
+      color: #2164d6;
+      text-shadow: 1px 1px #2164d6;
+      margin-bottom: 15px;
+    }
+
+     p {
+      text-align: center;
+      font-size: 26px;
+      margin-top: 10%;
+      margin-bottom: 10%;}
+
+    .info-row {
+      
+      margin-bottom: 18px;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #002f4d;
+      margin-bottom: 5px;
+    }
+
+    .value {
+      background-color: #f0f8ff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 20px;
+      word-break: break-all;
+    }
+
+    /* パスワード行 */
+    .password-container {
+      position: relative;
+    }
+
+    .password-text {
+      background-color: #f0f8ff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px 38px 10px 10px;
+      font-size: 15px;
+      word-break: break-all;
+    }
+
+    /* Icon con mắt */
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      fill: #002f4d;
+      transition: fill 0.2s ease;
+    }
+
+    .toggle-password:hover {
+      fill: #1e90ff;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    a.button {
+      flex: 1;
+      text-align: center;
+      margin: 0 5px;
+      margin-top: 15%;
+      padding: 12px 0;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 16px;
+      border: 2px solid #002f4d;
+      color: #002f4d;
+      background-color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    a.button.active {
+      background-color: #f8f8f9;
+      color: #002f4d;
+    }
+
+    a.button:hover {
+      background-color:#002f4d;
+      color: #f7f7f7;
+    }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <h1>Anispot</h1>
+    <p>登録内容確認</p>
+
+    <div class="info-row">
+      <div class="label">氏名：</div>
+      <div class="value" id="name"></div>
+    </div>
+    <div class="info-row">
+      <div class="label">氏名(フリガナ)：</div>
+      <div class="value" id="kana"></div>
+    </div>
+    <div class="info-row">
+      <div class="label">住所：</div>
+      <div class="value" id="address"></div>
+    </div>
+    <div class="info-row">
+      <div class="label">電話番号：</div>
+      <div class="value" id="phone"></div>
+    </div>
+    <div class="info-row">
+      <div class="label">メール：</div>
+      <div class="value" id="email"></div>
+    </div>
+
+    <div class="info-row">
+      <div class="label">パスワード：</div>
+      <div class="password-container">
+        <div class="password-text" id="password"></div>
+        <!-- Icon con mắt -->
+        <svg class="toggle-password" onclick="togglePassword(this)" viewBox="0 0 24 24">
+          <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5zM12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+          <circle cx="12" cy="12" r="2.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <a href="newmember.html" class="button">戻る</a>
+      <a href="member.html" class="button active">確認</a>
+    </div>
+  </div>
+
+  <script>
+    // Lấy dữ liệu đã lưu
+    const passwordValue = sessionStorage.getItem("password") || "";
+    const passwordDiv = document.getElementById("password");
+    let hidden = true;
+
+    // Ban đầu hiển thị ký tự ●●●
+    passwordDiv.textContent = "●".repeat(passwordValue.length);
+
+    function togglePassword(icon) {
+      hidden = !hidden;
+      if (hidden) {
+        passwordDiv.textContent = "●".repeat(passwordValue.length);
+        icon.style.fill = "#002f4d";
+      } else {
+        passwordDiv.textContent = passwordValue;
+        icon.style.fill = "#1e90ff";
+      }
+    }
+
+    // Các thông tin khác
+    document.getElementById("name").textContent = sessionStorage.getItem("name") || "";
+    document.getElementById("kana").textContent = sessionStorage.getItem("kana") || "";
+    document.getElementById("address").textContent = sessionStorage.getItem("address") || "";
+    document.getElementById("phone").textContent = sessionStorage.getItem("phone") || "";
+    document.getElementById("email").textContent = sessionStorage.getItem("email") || "";
+  </script>
+</body>
+</html>

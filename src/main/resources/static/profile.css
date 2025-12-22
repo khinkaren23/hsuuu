@@ -1,0 +1,1330 @@
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  background-color: #6171b0;
+  margin: 0;
+  padding: 0 0 80px 0;
+  color: #222;
+}
+
+/* ヘッダー */
+header {
+  background:#AFDFE4;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  text-align: center;
+  z-index: 10;
+}
+
+header .tabs {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 15px;
+}
+
+header .tabs span {
+  cursor: pointer;
+  color: #555;
+}
+
+header .tabs span.active {
+  color: #ff7b00;
+  border-bottom: 2px solid #ff7b00;
+  padding-bottom: 4px;
+}
+
+/*検索バー（右上アイコンサイズに合わせた） */
+.search-container {
+  position: absolute !important;
+  top: 8px !important;
+  right: 12px !important;
+  width: 14% !important;
+  height: 22px !important;
+  background-color: white !important;
+  border-radius: 10px !important;
+  padding: 0 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15) !important;
+}
+
+.search-container input {
+  width: 100% !important;
+  height: 18px !important;
+  font-size: 9px !important;
+  border: none !important;
+  outline: none !important;
+  padding-left: 3px !important;
+}
+
+.search-container i {
+  font-size: 12px !important;
+  margin-left: 4px !important;
+}
+
+/* 投稿入力 */
+.post-input {
+  background: #fff;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info .avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.post-icons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  color: #666;
+}
+
+/* 投稿フィード */
+.post {
+  background: #fff;
+  margin: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post-header img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.post-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.post-images img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 8px;
+  font-size: 16px;
+  color: #555;
+}
+
+.post-actions i {
+  cursor: pointer;
+}
+
+/* 💬 コメントモーダル */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.modal-content textarea {
+  width: 100%;
+  height: 80px;
+  resize: none;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.modal-actions button {
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#sendComment {
+  background: #5ca9ff;
+  color: #fff;
+}
+
+#closeModal {
+  background: #ccc;
+  color: #333;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;   
+  background: #fff;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+}
+
+.bottom-nav a,
+.bottom-nav i {
+  font-size: 40px; 
+}
+
+
+#addBtn {
+  font-size: 42px;
+  background: #ff7b00;
+  color: white;
+  padding: 18px 22px;
+  border-radius: 50%;
+  margin-top: -32px; /* ← SNS画面と同じ浮かせ量に */
+  box-shadow: 0 4px 12px rgba(255, 123, 0, 0.4);
+  cursor: pointer;
+}
+
+
+/* --- ✅ 通知画面（ --- */
+
+.notify-container {
+  margin: 20px 12px;
+}
+
+.notify-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 40px 20px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 17px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.notify-item i {
+  font-size: 22px;
+  color: #555;
+}
+
+
+
+
+
+/* --- ✅ アカウント画面（修正済みここから） --- */
+.account-container {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.avatar-large {
+  width: 140px;
+  height: 140px;
+  background: #ddd;
+  border-radius: 50%;
+  margin: 20px auto 12px;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 26px 0;
+  width: 100%;
+}
+
+.menu-list li {
+  background: #fff;
+  margin: 14px auto;
+  padding: 20px 26px;
+  border-radius: 14px;
+  width: 80%;
+  font-size: 18px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+.logout-btn {
+  display: block;
+  margin: 22px auto 0;
+  background: #ff7b00;
+  color: #fff;
+  border: none;
+  padding: 14px 36px;
+  border-radius: 24px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* --- 📱 スマホ専用（430px以下） --- */
+@media (max-width: 430px) {
+
+  .account-container {
+    padding: 20px 12px;
+  }
+
+  .avatar-large {
+    width: 110px;
+    height: 110px;
+    margin-top: 10px;
+  }
+
+  .menu-list li {
+    width: 94%;
+    padding: 16px 20px;
+    font-size: 16px;
+  }
+
+  .logout-btn {
+    padding: 12px 28px;
+    font-size: 16px;
+  }
+
+  .notify-item {
+    width: 94%;
+    padding: 14px 16px;
+    font-size: 16px;
+    min-height: 54px;
+  }
+}
+
+
+
+/* SNS画面ヘッダー用 */
+.sns-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.search-icon {
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+}
+
+.large-nav {
+  height: 90px !important;
+}
+
+.large-nav a,
+.large-nav i {
+  font-size: 90px !important;
+}
+
+.large-nav #addBtn {
+  font-size: 42px !important;
+  margin-top: -32px !important;
+  padding: 18px 22px !important;
+}
+
+.fa-heart.liked {
+  color: #ff4d4d;
+  transition: 0.2s ease;
+}
+
+/* 🖼 画像プレビュー横スクロール */
+.image-preview-container {
+  background: #fff;
+  margin: 10px;
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.image-preview-list {
+  display: flex;
+  gap: 8px;
+}
+
+.image-preview-item {
+  position: relative;
+}
+
+.image-preview-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.remove-img-btn {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 12px;
+  text-align: center;
+  line-height: 18px;
+  cursor: pointer;
+}
+
+/* ===== 録音/波形UI用スタイル ===== */
+
+/* 録音ボタン類 */
+#recStartBtn, #recStopBtn, #audioCloseBtn {
+  background: #ff7b00;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#recStopBtn[disabled] { opacity: 0.6; cursor: not-allowed; }
+
+/* 録音タイマー */
+#recTimer {
+  font-size: 16px;
+  color: #333;
+}
+
+/* 録音カード（feedや録音一覧に表示される） */
+.audio-post {
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* 再生コントロール行 */
+.audio-control {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+/* play/pause ボタン */
+.audio-play-btn {
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#5ca9ff;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  font-weight:700;
+  box-shadow:0 4px 12px rgba(92,169,255,0.25);
+}
+
+/* 波形コンテナ */
+.waveform {
+  display:flex;
+  align-items:center;
+  gap:4px;
+  height:32px;
+  width:220px;
+  overflow:hidden;
+}
+
+/* 棒1本のスタイル */
+.waveform .bar {
+  width:3.5px;
+  background: #ddd;
+  border-radius:2px;
+  height:8px;
+  transform-origin: bottom center;
+  animation: wave-idle 1s linear infinite;
+  animation-play-state: paused;
+}
+
+/* アニメーション（再生中に running） */
+.waveform.playing .bar {
+  background: linear-gradient(180deg, #ffb37a, #ff7b00);
+  animation-play-state: running;
+}
+
+/* バーごとに少し時間ずらす（臨場感） */
+.waveform .bar:nth-child(1){ animation-duration:0.8s; animation-delay:0s; }
+.waveform .bar:nth-child(2){ animation-duration:0.9s; animation-delay:0.05s; }
+.waveform .bar:nth-child(3){ animation-duration:1.05s; animation-delay:0.1s; }
+.waveform .bar:nth-child(4){ animation-duration:0.85s; animation-delay:0.03s; }
+.waveform .bar:nth-child(5){ animation-duration:0.95s; animation-delay:0.07s; }
+.waveform .bar:nth-child(6){ animation-duration:1.1s; animation-delay:0.02s; }
+.waveform .bar:nth-child(7){ animation-duration:0.9s; animation-delay:0.06s; }
+.waveform .bar:nth-child(8){ animation-duration:0.8s; animation-delay:0.04s; }
+.waveform .bar:nth-child(9){ animation-duration:1.0s; animation-delay:0.08s; }
+.waveform .bar:nth-child(10){ animation-duration:0.92s; animation-delay:0.01s; }
+
+/* idleアニメーション（高さ変化） */
+@keyframes wave-idle {
+  0% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1.0); }
+  100% { transform: scaleY(0.35); }
+}
+
+.delete-btn {
+  background: #ff6b6b;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.delete-btn:hover {
+  background: #ff3b3b;
+}
+
+/* ====== ピン留めオーディオプレビュー（画面上部） ====== */
+.pinned-audio {
+  position: sticky;
+  top: 56px; /* header 高さに合わせて調整 */
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(250,250,250,0.95));
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 8px 12px;
+  z-index: 1200;
+  display:flex;
+  justify-content:center;
+}
+
+.pinned-row {
+  width: 95%;
+  max-width: 960px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+/* basic play button */
+.audio-play-btn {
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:#5ca9ff;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  cursor:pointer;
+  border:none;
+  box-shadow:0 4px 10px rgba(92,169,255,0.22);
+}
+
+/* post now button */
+.post-btn {
+  margin-left:auto;
+  background:#ff7b00;
+  color:#fff;
+  border:none;
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* delete */
+.delete-btn {
+  background:#ff6b6b;
+  color:#fff;
+  border:none;
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* waveform */
+.waveform {
+  display:flex;
+  align-items:center;
+  gap:4px;
+  height:36px;
+  width:260px;
+  overflow:hidden;
+}
+
+.waveform .bar {
+  width:4px;
+  border-radius:2px;
+  transform-origin: bottom center;
+  animation: wave-idle 1s linear infinite;
+  animation-play-state: paused;
+}
+
+/* colorful look */
+.waveform.colorful .bar {
+  background: linear-gradient(180deg,#ffd7a6,#ff7b00);
+}
+
+/* running state */
+.waveform.playing .bar { animation-play-state: running; }
+
+/* stagger durations for lively effect */
+.waveform .bar:nth-child(1){ animation-duration:0.85s; animation-delay:0s; }
+.waveform .bar:nth-child(2){ animation-duration:0.95s; animation-delay:0.05s; }
+.waveform .bar:nth-child(3){ animation-duration:1.05s; animation-delay:0.02s; }
+.waveform .bar:nth-child(4){ animation-duration:0.9s; animation-delay:0.07s; }
+.waveform .bar:nth-child(5){ animation-duration:1.1s; animation-delay:0.03s; }
+.waveform .bar:nth-child(6){ animation-duration:0.86s; animation-delay:0.06s; }
+.waveform .bar:nth-child(7){ animation-duration:0.98s; animation-delay:0.01s; }
+.waveform .bar:nth-child(8){ animation-duration:0.9s; animation-delay:0.04s; }
+.waveform .bar:nth-child(9){ animation-duration:1.02s; animation-delay:0.08s; }
+.waveform .bar:nth-child(10){ animation-duration:0.92s; animation-delay:0.02s; }
+
+@keyframes wave-idle {
+  0% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1.0); }
+  100% { transform: scaleY(0.35); }
+}
+
+.audio-duration { font-size:13px; color:#444; margin-left:6px; }
+
+/* hide native audio */
+.hidden-audio { display:none; }
+
+/* small responsive tweaks */
+@media (max-width:430px) {
+  .pinned-row { gap:8px; }
+  .waveform { width:160px; height:28px; }
+  .audio-play-btn { width:36px; height:36px; }
+  .post-btn { padding:6px 10px; }
+}
+
+/* ===== ハッシュタグ候補 ===== */
+.hashtag-suggestions {
+  position: absolute;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  list-style: none;
+  padding: 6px 0;
+  margin: 0;
+  width: 160px;
+  z-index: 3000;
+
+  /* 影で浮かせる（見やすくなる） */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+  /* 初期は非表示 */
+  display: none;
+}
+
+.hashtag-suggestions li {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #333;
+  font-size: 14px;
+}
+
+.hashtag-suggestions li:hover {
+  background: #f0f0f0;
+}
+
+#addBtn {
+  z-index: 9999 !important;
+  position: relative;
+}
+
+/* post.html専用 */
+body.post-page {
+  padding: 16px;
+  margin: 0;
+}
+
+/* 投稿入力エリアを画面いっぱいに広げる */
+body.post-page .post-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  border-radius: 8px;
+  background: #fff;
+  margin-bottom: 20px;
+}
+
+/* 画像プレビューも幅いっぱい */
+body.post-page .image-preview-container {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+
+/* モーダルもスマホに最適化 */
+body.post-page .modal-content {
+  width: 90%; /* 画面幅の90% */
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* スマホ向けメディアクエリ */
+@media screen and (max-width: 600px) {
+  body.post-page .post-input {
+    padding: 12px;
+  }
+  body.post-page .post-btn {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+
+/* 画像1～5枚まで自動で超キレイに並ぶ（Twitter・Instagramと同じ） */
+.post-images-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+  margin: 10px 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.post-images-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #f0f0f0;
+}
+
+/* 1枚のとき → 大きく表示 */
+.post-images-grid:has(img:nth-child(1):nth-last-child(1)) {
+  grid-template-columns: 1fr;
+}
+
+/* 3枚以上のとき → 3列にする（めっちゃカッコいい） */
+.post-images-grid:has(img:nth-child(3)) ~ * {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* 4枚・5枚も同じ3列でキレイに収まる */
+.post-images-grid:has(img:nth-child(4)),
+.post-images-grid:has(img:nth-child(5)) {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* ===== Instagram風 コメントレイアウト ===== */
+
+.ig-comment-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #333;
+}
+
+.ig-comment-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ig-comment-body {
+  flex: 1;
+}
+
+.ig-comment-user {
+  color: #fff;
+  font-weight: bold;
+  margin-right: 6px;
+}
+
+.ig-comment-text {
+  color: #ddd;
+  word-break: break-word;
+}
+
+.ig-comment-actions {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 5px;
+  display: flex;
+  gap: 12px;
+}
+
+.ig-comment-likes {
+  cursor: pointer;
+}
+
+.ig-comment-reply {
+  cursor: pointer;
+}
+
+.ig-comment-like-icon {
+  margin-top: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #ddd;
+}
+.ig-comment-like-icon.liked {
+  color: #ff4d4d;
+}
+
+/* === Instagram風 フルスクリーンコメントモーダル === */
+
+#commentModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6); /* 画面暗くする */
+  z-index: 3000;
+  justify-content: center;
+  align-items: flex-end; /* 下から出る感じにする */
+}
+
+#commentModal .modal-content {
+  width: 100%;
+  height: 95%;              /* ほぼ全画面 */
+  max-width: none;
+  background: #000;         /* Instagramと同じ黒背景 */
+  color: #fff;
+  border-radius: 18px 18px 0 0; /* 上だけ丸く */
+  padding: 16px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  animation: slideUp 0.25s ease;
+}
+
+/* 下からスッと出てくるアニメーション */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* コメント入力欄 */
+#commentText {
+  width: 100%;
+  min-height: 70px;
+  resize: none;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #111;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+/* 送信ボタン位置を固定 */
+.modal-actions {
+  position: sticky;
+  bottom: 0;
+  background: #000;
+  padding: 12px 0;
+  text-align: right;
+}
+
+#sendComment,
+#closeModal {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#sendComment {
+  background: #0095f6;
+  color: white;
+}
+
+#closeModal {
+  background: #333;
+  color: white;
+}
+
+/* 5枚画像対応（post-images-new） */
+.post-images-new {
+  display: grid;
+  gap: 4px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+/* 画像数ごとに自動レイアウト */
+.post-images-new img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 1枚 → 全幅 */
+.post-images-new:has(img:nth-child(1):nth-last-child(1)) {
+  grid-template-columns: 1fr;
+}
+
+/* 2枚 → 2列 */
+.post-images-new:has(img:nth-child(2):nth-last-child(1)) {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* 3枚以上 → 3列 */
+.post-images-new:has(img:nth-child(3)),
+.post-images-new:has(img:nth-child(4)),
+.post-images-new:has(img:nth-child(5)) {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#deleteModal {
+  z-index: 4000 !important;
+}
+
+#repostModal {
+  z-index: 4000 !important;
+}
+
+
+/* ====== 通知詳細カード UI ====== */
+
+.notify-list {
+  padding: 16px;
+}
+
+.notify-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.notify-card:hover {
+  transform: scale(1.02);
+}
+
+.notify-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.notify-text {
+  flex: 1;
+  font-size: 15px;
+  color: #333;
+}
+
+.notify-time {
+  color: #777;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.post-header-back {
+  position: relative;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.post-header-back i {
+  position: absolute; 
+  left: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.notification-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.notification-card img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.notification-card .text {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.post-modal-content {
+  background: #fff;
+  padding: 10px;
+  width: 85%;
+  max-width: 430px;
+  border-radius: 10px;
+  text-align: center;
+  animation: fadeIn 0.25s;
+}
+
+.modal-image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.close-modal {
+  font-size: 25px;
+  float: right;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.post-detail {
+  margin: 10px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post-images img {
+  width: 100%;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.post-actions {
+  margin-top: 10px;
+}
+
+.like-btn.liked {
+  color: #ff4d4d;
+}
+
+.comments-section {
+  margin-top: 10px;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+.comment-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+/* ======= プロフィールページ ======= */
+.profile-page {
+  background: #000;
+  color: #fff;
+}
+
+/* 🔝 ヘッダー */
+.profile-top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  background: #000;
+  border-bottom: 1px solid #333;
+}
+
+.profile-top-header i {
+  font-size: 22px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* 👤 プロフィール情報 */
+.profile-info {
+  padding: 20px;
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.profile-id {
+  color: #aaa;
+  margin: 3px 0 10px;
+}
+
+.profile-bio {
+  margin: 10px 0;
+  color: #ddd;
+}
+
+.profile-link {
+  color: #1d9bf0;
+  text-decoration: none;
+}
+
+/* フォロー数 */
+.follow-stats {
+  margin-top: 12px;
+  display: flex;
+  gap: 18px;
+  font-size: 15px;
+}
+
+.follow-stats strong {
+  color: #fff;
+}
+
+/* 📌 タブ */
+.profile-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #333;
+  margin-bottom: 10px;
+}
+
+.profile-tabs span {
+  color: #aaa;
+  padding-bottom: 6px;
+  cursor: pointer;
+}
+
+.profile-tabs span.active {
+  color: #fff;
+  border-bottom: 2px solid #1d9bf0;
+}
+
+/* プロフィール情報がタブのクリックを邪魔しないようにする */
+.profile-info {
+  pointer-events: none !important;   /* ← これが超重要 */
+  position: relative;
+  z-index: 1;
+}
+
+/* プロフィール情報内の要素はクリック可能に戻す */
+.profile-info * {
+  pointer-events: auto !important;
+}
+
+/* タブを前に出す */
+.profile-tabs {
+  position: relative;
+  z-index: 9999 !important;
+  background: #000;
+  pointer-events: auto !important;
+}
+
+.post {
+  background: #fff;
+  color: #000;
+  border-bottom: 1px solid #333;
+  border-radius: 0;
+}
+
+.post-actions {
+  color: #888;
+  font-size: 14px;
+}
+
+
+/* コメント通知（返信一覧）ページ専用 */
+.reply-notify-page {
+  background: #000;
+  color: #fff;
+}
+
+/* コメント通知ページ専用で投稿感を消す */
+.reply-notify-page .post {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* アクションアイコンを消す */
+.reply-notify-page .post-actions {
+  display: none;
+}
+
+
+.follow-btn {
+  display: inline-block;
+  width: auto;
+  min-width: 140px;
+
+  margin: 12px 0 16px; /* auto を消す */
+
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 600;
+
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  background-color: #1d9bf0;
+  color: #fff;
+}
+
+.follow-btn:hover {
+  background-color: #1a8cd8;
+}
+
+/* フォロー中 */
+.follow-btn.following {
+  background-color: #fff;
+  color: #111;
+
+  border: 1px solid #ccc;
+}
+
+/* フォロー中 hover → フォロー解除を示唆 */
+.follow-btn.following:hover {
+  background-color: #ffecec;
+  color: #d93025;
+  border-color: #f5c2c7;
+}
+
+/* ===== 通知画面（最終・唯一） ===== */
+.notify-list {
+  background: #ffffff;
+  padding: 8px 0 100px;
+}
+
+.notification-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #fff;
+  border-bottom: 1px solid #e6ecf0;
+  cursor: pointer;
+}
+
+.notification-card:hover {
+  background: #f7f9f9;
+}
+
+.notification-card .avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.notification-card .info,
+.notification-card .notify-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.notification-card .notify-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.notification-card .name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f1419;
+}
+
+.notification-card .id,
+.notification-card .time {
+  font-size: 13px;
+  color: #536471;
+}
+
+.notification-card .text {
+  font-size: 15px;
+  line-height: 1.4;
+  color: #0f1419;
+  word-break: break-word;
+}
+
+.notification-card .reply-to {
+  font-size: 13px;
+  color: #1d9bf0;
+}
+
+.notification-card p {
+  margin: 0;
+}
+

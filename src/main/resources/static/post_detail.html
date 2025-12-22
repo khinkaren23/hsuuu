@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>投稿詳細 - SNS</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="anispot.css" />
+    <style>
+        /* 詳細ページ固有のスタイル */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .post-detail-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding-bottom: 120px; /* ボトムナビゲーションの分 + 余白 */
+        }
+        .comments-section {
+            margin-top: 20px;
+            padding: 0 10px;
+        }
+        .back-button {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+            border-bottom: 1px solid #eee;
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .back-button i {
+            margin-right: 10px;
+        }
+    </style>
+  </head>
+
+  <body id="post-detail">
+    
+    <div class="post-detail-container">
+        <!-- 戻るボタン -->
+        <div class="back-button" onclick="history.back()">
+            <i class="fa-solid fa-arrow-left"></i> 投稿
+        </div>
+
+        <!-- 投稿詳細表示エリア -->
+        <main id="post-content"></main>
+
+        <!-- コメント入力エリア -->
+        <div style="padding: 10px; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+            <textarea id="commentText" placeholder="返信を投稿" style="width: 100%; border: none; outline: none; resize: none; font-family: inherit; min-height: 60px;"></textarea>
+            <div style="text-align: right; margin-top: 5px;">
+                <button id="submitCommentBtn" class="post-btn">返信</button>
+            </div>
+        </div>
+
+        <!-- コメント一覧エリア -->
+        <section class="comments-section">
+            <h3>コメント</h3>
+            <div id="commentList"></div>
+        </section>
+    </div>
+
+    <div class="bottom-nav">
+      <button class="icon" onclick="location.href='home.html'"><img src="img/a.png"></button>
+      <button class="icon" onclick="location.href='aaa.html'"><img src="img/ar.png"></button>
+      <button class="icon" onclick="location.href='index.html'"><img src="img/c2.png"></button>
+      <button class="icon" onclick="location.href='notifications.html'"><img src="img/d.png"></button>
+      <button class="icon" onclick="location.href='account.html'"><img src="img/e.png"></button>
+    </div>
+
+    <script type="module" src="post_detail.js"></script>
+  </body>
+</html>

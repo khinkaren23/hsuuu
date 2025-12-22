@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>検索画面</title>
+    <link rel="stylesheet" href="anispot.css">
+  </head>
+
+  <body id="search">
+    <header>
+      <div class="APP">
+        <div class="appicon"><img src="img/g.png" height="471" width="471"/></div>
+        <div class="appname">Anispot</div>
+      </div>
+
+      <div class="tabs">
+        <button class="status" onclick="location.href='home.html'">あなたへのおすすめ</button>
+        <button class="status active" onclick="location.href='search.html'">検索</button>
+      </div>
+    </header>
+
+    <div class="search">
+      <div id="searchform">
+       <input type="search" id="searchinput" class="search-box" placeholder="  タイトルを入力  ">
+       <input class="icon" type="image"  src="img/f.png" alt="検索" value="検索">
+      </div>
+      <div id="search-result">
+          <div class="search-result__hit-num"></div>
+          <div id="search-result__list"></div>
+      </div>
+
+        <ul id="targeArea">
+            <li class="targeItem">・ネクストヒューマン株式会社</li>
+            <li class="targeItem">・桐生印刷株式会社</li>
+            <li class="targeItem">・ビヨンドソフトウェア</li>
+            <li class="targeItem">・上毛書店</li>
+            <li class="targeItem">・テレビ夕焼け株式会社</li>
+            <li class="targeItem">・モノリス書店</li>
+            <li class="targeItem">・株式会社ヒューマンスレイブ</li>
+            <li class="targeItem">・イディオットトライブ株式会社</li>
+        </ul>
+    </div>
+
+    <div class="category">ジャンル別</div>
+
+    <div class="grid">
+      <button class="card">
+        <div class="cardtitle" onclick="location.href='genre.html'">SF/ファンタジー</div>
+      </button>
+      <button class="card">
+        <div class="cardtitle">ロボット/メカ</div>
+      </button>
+      <button class="card">
+        <div class="cardtitle">アクション/バトル</div>
+      </button>
+      <button class="card">
+        <div class="cardtitle">コメディ/ギャグ</div>
+      </button>
+      <button class="card">
+        <div class="cardtitle">恋愛/ラブコメ</div>
+      </button>
+      <button class="card">
+        <div class="cardtitle">日常/ほのぼの</div>
+      </button>
+      <button class="card">
+        <div class="cardtitle">スポーツ/競技</div>
+      </button>
+      <button class="card">
+        <div class="cardtitle">ホラー/サスペンス/推理</div>
+      </button>
+    </div>
+
+    <div class="category">年代別</div>
+
+    <div class="grid">
+      <button class="card">
+        <div class="cardtitle">2000年代</div>
+      </button>
+      <button class="card">
+        <div class="cardtitle">2010年代</div>
+      </button>
+      <button class="card">
+        <div class="cardtitle">2020年代</div>
+      </button>
+    </div>
+
+    <div class="bottom-nav">
+      <button class="icon active" onclick="location.href='home.html'"><img src="img/a2.png"></button>
+      <button class="icon" onclick=""><img src="img/ar.png"></button>
+      <button class="icon" onclick="location.href='index.html'"><img src="img/c.png"></button>
+      <button class="icon" onclick="location.href='notifications.html'"><img src="img/d.png"></button>
+      <button class="icon" onclick="location.href='account.html'"><img src="img/e.png"></button>
+    </div>
+
+  </body>
+</html>

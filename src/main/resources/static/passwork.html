@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>登録完了</title>
+  <style>
+       body {
+      background: linear-gradient( #a0c7eb,  #e9f1f9, #a5c9ef);
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      
+    }
+
+
+    .screen {
+      position: relative; /* để con thỏ nằm trong khung */
+      width: 360px;
+      height: 550px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      border-radius: 20px;
+    }
+
+    .content {
+      flex: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-top: 10%;
+      color: #2164d6;
+      text-shadow: 1px 1px #2164d6;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 23px;
+      margin-top: 20%;
+      margin-bottom: 10%;
+      text-align: center;
+    }
+     .hey{
+      font-size: 21px;
+      text-align: center;
+      margin-top: 10%;
+
+    }
+
+.button-container {
+  display: flex;
+  justify-content: center; /* để nút nằm giữa */
+  gap: 5%;               /* khoảng cách giữa hai nút */
+  width: 100%;
+  bottom: 20px;
+  left: 0;
+}
+
+    a.button {
+      flex: 0;
+      width: 120px;
+      text-align: center;
+      display: block;
+      margin: 5px;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 16px;
+      border: 2px solid #002f4d;
+      color: #002f4d;
+      background-color: #fff;
+      transition: 0.3s;
+      margin-top: 10%;
+    }
+
+
+    a.button:hover {
+      background-color: #002f4d;
+      color: #fff;
+    }
+    .main-image {
+      width: 100%;
+      height: 125px;
+      margin-top: 15%;
+      object-fit: cover;
+      box-shadow:  0 0 2px  #0c0c0c;
+    }
+
+    /* 🐰 Con thỏ nhỏ rung nhẹ trong khung cạnh nút LOGIN */
+    .rabbit {
+      padding-bottom: 2.5%;
+      position: absolute;
+     /* thấp hơn một chút cạnh nút */
+      right: 20px;   /* sát phải trong khung */
+      width: 70px;
+      animation: shake 3s infinite ease-in-out;
+    }
+
+    @keyframes shake {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(3deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(-3deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    /* 🐰 Con thỏ nhỏ rung nhẹ trong khung cạnh nút LOGIN */
+    .rabbit {
+      padding-bottom: 2.5%;
+      position: absolute;
+     /* thấp hơn một chút cạnh nút */
+      right: 20px;   /* sát phải trong khung */
+      width: 70px;
+      animation: shake 3s infinite ease-in-out;
+    }
+
+    @keyframes shake {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(3deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(-3deg); }
+      100% { transform: rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <div class="content">
+      <h1>Anispot</h1>
+     <!-- Ảnh japan.jpg đứng yên -->
+      <img src="img/japan.jpg " alt="背景" class="main-image">
+      <p>完了しました。</p>
+      <p class="hey">パスワードを更新しました。<br>ログイン画面に戻ってください。</p>
+    </div>
+
+    <div class="button-container">
+      <a href="login.html" class="button">LOGIN</a>
+      <!-- 🐇 Con thỏ cạnh nút LOGIN -->
+      <img src="img/tho.jpg" alt="うさぎ" class="rabbit">
+    </div>
+  </div>
+</body>
+</html>

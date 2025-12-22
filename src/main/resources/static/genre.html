@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホーム画面</title>
+    <link rel="stylesheet" href="anispot.css">
+  </head>
+
+  <body id="genre">
+    <header>
+      <div class="APP">
+        <div class="left">
+          <div class="appicon"><img src="img/g.png" height="471" width="471"/></div>
+          <div class="appname">Anispot</div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="status" onclick="location.href='home.html'">あなたへのおすすめ</button>
+        <button class="status active" onclick="location.href='search.html'">検索</button>
+      </div>
+    </header>
+
+    <button class="category" onclick="location.href='genre.html'">SF/ファンタジー</button>
+
+    <div class="grid">
+      <button class="card">
+        <img src="img/hunter.jpg">
+        <div class="cardtitle">HUNTER×HUNTER</div>
+      </button>
+      <button class="card">
+        <img src="img/bleach.jpg">
+        <div class="cardtitle">BLEACH</div>
+      </button>
+      <button class="card">
+        <img src="img/jyujyutu.jpg">
+        <div class="cardtitle">呪術廻旋</div>
+      </button>
+      <button class="card">
+        <img src="img/dragon.png">
+        <div class="cardtitle">ドラゴンボール</div>
+      </button>
+
+    </div>
+
+    <div class="bottom-nav">
+      <button class="icon active" onclick="location.href='home.html'"><img src="img/a2.png"></button>
+      <button class="icon" onclick=""><img src="img/ar.png"></button>
+      <button class="icon" onclick="location.href='index.html'"><img src="img/c.png"></button>
+      <button class="icon" onclick="location.href='notifications.html'"><img src="img/d.png"></button>
+      <button class="icon" onclick="location.href='account.html'"><img src="img/e.png"></button>
+    </div>
+
+  </body>
+</html>

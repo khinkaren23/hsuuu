@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>新しいパスワード</title>
+  <style>
+    body {
+      background: linear-gradient(136deg, #a0c7eb,  #f6f6f6, #c2d8f0);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+ 
+
+    h1 {
+      font-size: 18px;
+      margin-top: 10%;
+      color: #2164d6;
+      text-shadow: 1px 1px #2164d6;
+      margin-bottom: 15px;
+      
+    }
+    p {
+      font-size: 33px;
+      margin-top: 10%;
+      margin-bottom: 10%;
+      text-align: center;
+    }
+
+    form {
+      width: 100%;
+      background-color: rgba(161, 212, 235, 0.7);
+      padding: 30px;
+      border-radius: 12px;
+      box-sizing: border-box;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 40px 12px 12px;
+      font-size: 24px;
+      border: 1px solid #000000;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    /* Icon luôn nằm giữa ô input */
+    .toggle-password {
+      position: absolute;
+      inset: 0 10px 0 auto; /* top=0 bottom=0 right=10px */
+      margin: auto;         /* căn giữa dọc */
+      cursor: pointer;
+      user-select: none;
+      width: 22px;
+      height: 22px;
+      fill: #002f4d;
+      pointer-events: auto;
+    }
+
+    /* Giữ icon cố định trong input, không bị đẩy khi có error */
+    .error {
+      position: relative;
+      color: red;
+      font-size: 13px;
+      margin-top: 8px;
+      height: 18px; /* luôn giữ chỗ, không làm icon bị lệch */
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 5%;
+      
+    }
+
+    a.button {
+      flex: 1;
+      text-align: center;
+      margin: 0 5px;
+      padding: 14px 0;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 18px;
+      border: 2px solid #002f4d;
+      color: #002f4d;
+      background-color: #fff;
+      transition: all 0.3s ease;
+    }
+  .button.active {
+      background-color: #fff;
+      color: #002f4d;
+    }
+
+    .button:hover {
+      color: #fafafa;
+      background-color: #002f4d;
+    }
+    
+  </style>
+</head>
+<body>
+  <div >
+    <div >
+      <h1>Anispot</h1>
+      <p>新しいパスワード</p>
+    </div>
+
+    <form id="passwordForm">
+      <div class="input-group">
+        新しいパスワード<br>
+        <input type="password" id="newPassword" placeholder="********">
+        <svg class="toggle-password" onclick="toggleVisibility('newPassword', this)" viewBox="0 0 24 24">
+          <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5zM12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+          <circle cx="12" cy="12" r="2.5"/>
+        </svg>
+        <div class="error" id="passwordError"></div>
+      </div>
+    
+      <ul style="font-size:15px; margin-bottom:15px;">
+        <li>８字以上ください</li>
+        <li>数字を入れてください</li>
+        <li>@*$%&#!+ は使えません</li>
+      </ul>
+
+      <div class="input-group">
+        新しい確認<br>
+        <input type="password" id="confirmPassword" placeholder="********">
+        <svg class="toggle-password" onclick="toggleVisibility('confirmPassword', this)" viewBox="0 0 24 24">
+          <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5zM12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+          <circle cx="12" cy="12" r="2.5"/>
+        </svg>
+        <div class="error" id="confirmError"></div>
+      </div>
+
+      <ul style="font-size:15px;">
+        <li>もう一度入力してください</li>
+      </ul>
+    </form>
+
+    <div class="button-container">
+      <a href="checkepasswork.html" class="button">戻る</a>
+      <a href="passwork.html" class="button active" onclick="return validatePassword(event)">確認</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleVisibility(id, icon) {
+      const input = document.getElementById(id);
+      if (input.type === "password") {
+        input.type = "text";
+        icon.style.fill = "#1e90ff";
+      } else {
+        input.type = "password";
+        icon.style.fill = "#002f4d";
+      }
+    }
+
+    function validatePassword(event) {
+      event.preventDefault();
+      const password = document.getElementById('newPassword').value;
+      const confirm = document.getElementById('confirmPassword').value;
+      const passwordError = document.getElementById('passwordError');
+      const confirmError = document.getElementById('confirmError');
+
+      passwordError.textContent = '';
+      confirmError.textContent = '';
+
+      const passwordRegex = /^(?=.*\d)[A-Za-z\d]{8,}$/;
+      let valid = true;
+
+      if (!passwordRegex.test(password)) {
+        passwordError.textContent = 'パスワードは8文字以上かつ数字を含む必要があります';
+        valid = false;
+      }
+
+      if (password !== confirm) {
+        confirmError.textContent = '同上してください。';
+        valid = false;
+      }
+
+      if (valid) {
+        window.location.href = "passwork.html";
+      }
+    }
+  </script>
+</body>
+</html>

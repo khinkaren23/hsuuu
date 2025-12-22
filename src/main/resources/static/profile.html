@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>プロフィール</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="profile-page">
+
+  <!-- 🔙 上部ヘッダー -->
+  <header class="profile-top-header">
+    <i class="fa-solid fa-arrow-left" onclick="window.location.href='index.html';"></i>
+    <h2 id="headerUserName">ユーザー名</h2>
+    <i class="fa-solid fa-ellipsis"></i>
+  </header>
+
+  <!-- 🧑‍🎤 プロフィール基本情報 -->
+  <section class="profile-info">
+    <img id="profileAvatar" class="profile-avatar">
+
+    <h2 id="profileName">ユーザー名</h2>
+    <p id="profileId" class="profile-id">@user</p>
+
+    <button id="followBtn" class="follow-btn">フォロー</button>
+
+    <p id="profileBio" class="profile-bio">ここに自己紹介が入ります。</p>
+
+    <a id="profileLink" class="profile-link" href="#" target="_blank">
+      example.com
+    </a>
+
+    <div class="follow-stats">
+      <span><strong id="followCount">0</strong> フォロー中</span>
+      <span><strong id="followerCount">0</strong> フォロワー</span>
+    </div>
+  </section>
+
+  <!-- 📌 タブ（投稿 / 返信 / 画像など） -->
+  <nav class="profile-tabs">
+  <span id="tab-posts" class="active">投稿</span>
+  <span id="tab-replies">返信</span>
+  <span id="tab-images">画像</span>
+</nav>
+
+
+  <!-- 📝 投稿一覧 -->
+  <div id="profilePosts"></div>
+
+  <script src="profile.js"></script>
+</body>
+</html>
+
