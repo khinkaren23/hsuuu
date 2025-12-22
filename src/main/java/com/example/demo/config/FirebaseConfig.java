@@ -7,8 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 @Configuration
 public class FirebaseConfig {
@@ -16,19 +15,18 @@ public class FirebaseConfig {
     @Bean
     public FirebaseApp firebaseApp() {
         try {
-            // 🔹 Read Firebase JSON from environment variable
-            String firebaseJson = System.getenv("FIREBASE_SERVICE_ACCOUNT_JSON");
+            String base64 = System.getenv("FIREBASE_SERVICE_ACCOUNT_BASE64");
 
-            if (firebaseJson == null || firebaseJson.isBlank()) {
-                throw new IllegalStateException("FIREBASE_SERVICE_ACCOUNT_JSON is not set");
+            if (base64 == null || base64.isEmpty()) {
+                throw new IllegalStateException("FIREBASE_SERVICE_ACCOUNT_BASE64 is not set");
             }
 
-            InputStream serviceAccount =
-                    new ByteArrayInputStream(firebaseJson.getBytes(StandardCharsets.UTF_8));
+            byte[] decoded = Base64.getDecoder().decode(base64);
+            ByteArrayInputStream serviceAccount =
+                    new ByteArrayInputStream(decoded);
 
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setStorageBucket("myappanispot.appspot.com")
                     .build();
 
             if (FirebaseApp.getApps().isEmpty()) {
