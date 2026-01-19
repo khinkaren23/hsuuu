@@ -36,3 +36,9 @@ build/
 src/main/resources/*firebase-adminsdk*.json
 src/main/resources/*serviceAccount*.json
 
+
+# Secrets
+src/main/resources/*firebase-adminsdk*.json
+*.json
+!package.json
+
