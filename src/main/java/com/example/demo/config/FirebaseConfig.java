@@ -5,35 +5,35 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource; // 追加
 
-import java.io.IOException;
-import java.io.InputStream; // 追加
+import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 @Configuration
 public class FirebaseConfig {
 
     @Bean
-    public FirebaseApp firebaseApp() throws IOException {
-        // 【修正】ClassPathResourceを使って読み込む（これなら確実です）
-        // ※ファイル名が間違っていないか再確認してください
-        ClassPathResource resource = new ClassPathResource("myappanispot-firebase-adminsdk-fbsvc-285c3b4cf8.json");
-        
-        // ファイルが開けるかチェック
-        if (!resource.exists()) {
-            throw new IOException("FirebaseのJSONファイルが見つかりません: " + resource.getPath());
+    public FirebaseApp firebaseApp() throws Exception {
+
+        // Railway variable (Base64 encoded JSON)
+        String base64 = System.getenv("FIREBASE_SERVICE_ACCOUNT_BASE64");
+
+        if (base64 == null || base64.isBlank()) {
+            throw new IllegalStateException("FIREBASE_SERVICE_ACCOUNT_BASE64 is not set");
         }
 
-        try (InputStream serviceAccount = resource.getInputStream()) {
-            FirebaseOptions options = FirebaseOptions.builder()
+        byte[] decoded = Base64.getDecoder().decode(base64);
+        ByteArrayInputStream serviceAccount = new ByteArrayInputStream(decoded);
+
+        FirebaseOptions options = FirebaseOptions.builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                .setStorageBucket("myappanispot.appspot.com") 
+                .setStorageBucket("myappanispot.appspot.com")
                 .build();
 
-            if (FirebaseApp.getApps().isEmpty()) {
-                return FirebaseApp.initializeApp(options);
-            }
-            return FirebaseApp.getInstance();
+        if (FirebaseApp.getApps().isEmpty()) {
+            return FirebaseApp.initializeApp(options);
         }
+        return FirebaseApp.getInstance();
     }
 }
