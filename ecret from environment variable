@@ -1,0 +1,13 @@
+[1mdiff --git a/src/main/resources/application.properties b/src/main/resources/application.properties[m
+[1mindex 79fad95..377d4cd 100644[m
+[1m--- a/src/main/resources/application.properties[m
+[1m+++ b/src/main/resources/application.properties[m
+[36m@@ -1,5 +1,5 @@[m
+ # ---------------------------------------------------------[m
+ # JWT Settings[m
+ # ---------------------------------------------------------[m
+[31m-jwt.secret=MySuperSecretKeyForJwtTokenGenerationMySuperSecretKeyForJwtTokenGeneration[m
+[31m-jwt.expiration=86400000[m
+\ No newline at end of file[m
+[32m+[m[32mjwt.secret=${JWT_SECRET}[m
+[32m+[m[32mjwt.expiration=86400000[m
