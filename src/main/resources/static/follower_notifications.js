@@ -2,8 +2,6 @@
 // フォロワー一覧 (安定化 & 最適化)
 // ==========================================
 
-// const API_BASE_ROOT = "http://localhost:8080";
-// const IMAGE_BASE_URL = "http://localhost:8080/"; // 画像のベースURL
 // ▼▼▼ 変更後（環境に合わせて自動取得） ▼▼▼
 const API_BASE_URL = window.location.origin;
 const IMAGE_BASE_URL = window.location.origin + "/";
@@ -74,10 +72,8 @@ async function loadFollowers() {
       item.innerHTML = `
         <img src="${avatarUrl}" class="avatar" alt="${name}">
         <div class="notify-content">
-          <div class="notify-header">
-            <span class="name">${name}</span>
-          </div>
-          <div class="text" style="color: #666; font-size: 0.9em;">${bio}</div>
+          <span class="name">${name}</span>
+          <span class="text" style="color: #666; font-size: 0.9em;">${bio}</span>
         </div>
       `;
       container.appendChild(item);

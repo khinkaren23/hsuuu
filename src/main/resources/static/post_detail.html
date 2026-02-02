@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>投稿詳細 - SNS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="anispot.css" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="index2.css" />
+  </head>
+
+  <body id="post-detail">
+
+    <header>
+      <div class="APP">
+          <div class="appname">Anispot</div>
+      </div>
+    
+      <div class="tab">
+        <div class="header-title">
+            <h3>投稿</h3>
+        </div>
+      </div>
+    </header>
+    
+    <div class="post-detail-container">
+        <!-- 投稿詳細表示エリア -->
+        <main id="post-content"></main>
+
+        <!-- コメント入力エリア -->
+        <div class="post-detail-comment">
+            <textarea id="commentText" placeholder="コメントを入力..."></textarea>
+            <div>
+                <button id="sendComment" class="post-btn">送信</button>
+            </div>
+        </div>
+
+        <!-- コメント一覧エリア -->
+        <section class="comments-section">
+            <h3>コメント</h3>
+            <div id="commentList"></div>
+        </section>
+    </div>
+
+    <div class="bottom-nav">
+      <button class="icon" onclick="location.href='home.html'"><img src="img/a.png"></button>
+      <button class="icon" onclick="location.href='index.html'"><img src="img/c.png"></button>
+      <button class="icon" onclick="location.href='notifications.html'"><img src="img/d.png"></button>
+      <button class="icon" onclick="location.href='account.html'"><img src="img/e.png"></button>
+    </div>
+
+    <!-- リポスト（シェア）モーダル -->
+    <div id="repostModal" class="modal">
+      <div class="modal-content">
+        <h3>リポスト</h3>
+        <p>この投稿をリポストしますか？</p>
+        <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
+          <button id="confirmRepostBtn">はい</button>
+          <button id="cancelRepostBtn">キャンセル</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 📌 投稿削除モーダル -->
+    <div id="deleteModal" class="modal">
+      <div class="modal-content">
+        <h3>投稿を削除</h3>
+        <p>この投稿を削除しますか？</p>
+        <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
+          <button id="confirmDeleteBtn">削除</button>
+          <button id="cancelDeleteBtn">キャンセル</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="post_detail.js"></script>
+  </body>
+</html>

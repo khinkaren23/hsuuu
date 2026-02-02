@@ -6,9 +6,6 @@
 const CURRENT_USER_ID = "1aVxtG72jiGR1SinFNR6"; // テスト用の固定ユーザーID
 // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
-// const API_BASE_ROOT = "http://localhost:8080";
-// const IMAGE_BASE_URL = "http://localhost:8080/"; // 画像のベースURL
-// ▼▼▼ 変更後（環境に合わせて自動取得） ▼▼▼
 const API_BASE_ROOT = window.location.origin;
 const IMAGE_BASE_URL = window.location.origin + "/";
 let backendAvailable = true; // サーバー接続状態管理
@@ -146,7 +143,7 @@ function renderPostHTML(post) {
     const imagesHtml = post.imageUrls && post.imageUrls.length > 0 
         ? `<div class="post-images">
             ${post.imageUrls.map(url => 
-                `<img src="${getImageUrl(url)}" alt="post image" style="max-width:100%; border-radius:12px; margin-top:8px;">`
+                `<img src="${getImageUrl(url)}" alt="post image">`
             ).join("")}
         </div>`
         : "";
@@ -157,15 +154,15 @@ function renderPostHTML(post) {
         const rp = post.repostedPost;
         const rpUser = rp.user ? rp.user.username : "Unknown";
         const rpImagesHtml = rp.imageUrls && rp.imageUrls.length > 0
-            ? `<div class="post-images" style="margin-top:8px;">
+            ? `<div class="post-images">
                 ${rp.imageUrls.map(url => 
-                    `<img src="${getImageUrl(url)}" alt="repost image" style="max-width:100%; border-radius:10px;">`
+                    `<img src="${getImageUrl(url)}" alt="repost image">`
                 ).join("")}
             </div>`
             : "";
 
         repostHtml = `
-        <div class="reposted-content" style="border: 1px solid #ddd; border-radius: 12px; padding: 12px; margin-top: 10px; background-color: #dbdbdb41;">
+        <div class="reposted-content">
             <div style="font-size: 0.85em; color: #666; margin-bottom: 6px;">
                 <img src="${escapeHtml(getImageUrl(rp.user ? rp.user.profileImageUrl : null))}" alt="avatar" style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
                 <i class="fa-solid fa-retweet"></i> <strong>${escapeHtml(rpUser)}</strong> さんの投稿
@@ -174,7 +171,7 @@ function renderPostHTML(post) {
             ${rpImagesHtml}
         </div>`;
     } else if (post.repostId) {
-        repostHtml = `<div class="reposted-content" style="border: 1px solid #ddd; border-radius: 12px; padding: 12px; margin-top: 10px; background-color: #bbbbbb8e; color: #888;">
+        repostHtml = `<div class="reposted-content">
             <i class="fa-solid fa-triangle-exclamation"></i> 元の投稿は削除されたか、表示できません。
         </div>`;
     }
@@ -184,15 +181,15 @@ function renderPostHTML(post) {
     const bookmarkIcon = post.bookmarkedByCurrentUser ? "fa-solid fa-bookmark" : "fa-regular fa-bookmark";
     const bookmarkColor = post.bookmarkedByCurrentUser ? "#FFD700" : "";
     const deleteBtn = isMyPost 
-        ? `<button class="delete-post-btn" data-id="${post.id}" style="background:none; border:none; cursor:pointer; color:#999;"><i class="fa-solid fa-trash"></i></button>`
+        ? `<button class="delete-post-btn" data-id="${post.id}"><i class="fa-solid fa-trash"></i></button>`
         : "";
 
     return `
-    <article class="post" data-id="${post.id}" style="border-bottom: 1px solid #eee; padding: 12px; cursor: pointer;">
-        <div class="post-header" style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+    <article class="post" data-id="${post.id}">
+        <div class="post-header" >
             <img src="${avatarUrl}" alt="avatar" style="width:40px; height:40px; border-radius:50%; object-fit:cover;">
             <div class="user-info">
-                <a href="profile.html?userId=${post.user ? post.user.id : ''}" style="text-decoration: none; color: inherit;">
+                <a href="profile.html?userId=${post.user ? post.user.id : ''}">
                     <strong>${escapeHtml(username)}</strong>
                 </a>
                 <span style="color:#888; font-size:12px; margin-left:8px;">${timeDisplay}</span>
@@ -206,17 +203,17 @@ function renderPostHTML(post) {
 
         ${repostHtml}
 
-        <div class="post-actions" style="display:flex; gap:20px; margin-top:12px; color:#555;">
-            <button class="like-btn" data-id="${post.id}" data-type="post" style="background:none; border:none; cursor:pointer;">
+        <div class="post-actions">
+            <button class="post-action-btn like-btn" data-id="${post.id}" data-type="post">
                 <i class="${heartIcon}" style="color: ${heartColor};"></i> ${post.likeCount || 0}
             </button>
-            <button class="comment-btn" data-id="${post.id}" data-type="post" style="background:none; border:none; cursor:pointer;">
+            <button class="post-action-btn comment-btn" data-id="${post.id}" data-type="post">
                 <i class="fa-regular fa-comment"></i> ${post.commentCount || 0}
             </button>
-            <button class="repost-btn" data-id="${post.id}" style="background:none; border:none; cursor:pointer;">
+            <button class="post-action-btn repost-btn" data-id="${post.id}">
                 <i class="fa-solid fa-retweet" style="${post.repostedPost ? 'color:#00ba7c;' : ''};"></i>
             </button>
-            <button class="bookmark-btn" data-id="${post.id}" style="background:none; border:none; cursor:pointer;">
+            <button class="post-action-btn bookmark-btn" data-id="${post.id}">
                 <i class="${bookmarkIcon}" style="color: ${bookmarkColor};"></i>
             </button>
             ${deleteBtn}
@@ -579,15 +576,15 @@ function renderCommentsList(comments) {
 
         const heartIcon = comment.likedByCurrentUser ? "fa-solid fa-heart" : "fa-regular fa-heart";
         const heartColor = comment.likedByCurrentUser ? "#ff4d4d" : "";
-        const indent = level > 0 ? `margin-left: ${level * 30}px; border-left: 2px solid #eee; padding-left: 10px;` : "";
-        const replyIcon = level > 0 ? '<i class="fa-solid fa-turn-up" style="transform: rotate(90deg); margin-right: 5px; color: #ccc;"></i>' : '';
+        const indent = level > 0 ? `margin-left: ${level * 30}px; border-left: 1px solid #b4b4b4; padding-left: 10px;` : "";
+        const replyIcon = level > 0 ? '<i class="fa-solid fa-turn-up"></i>' : '';
         const isMyComment = String(comment.user.id) === String(CURRENT_USER_ID);
         const deleteBtn = isMyComment 
-            ? `<button class="delete-comment-btn" data-id="${comment.id}" style="border:none; background:none; cursor:pointer; color:#999; font-size:0.9em;"><i class="fa-solid fa-trash"></i></button>`
+            ? `<button class="delete-comment-btn" data-id="${comment.id}"><i class="fa-solid fa-trash"></i></button>`
             : '';
 
-        let html = `
-        <div class="comment-item" style="border-bottom:2px solid #ccc; padding:8px 0; ${indent}">
+        let html =`
+        <div class="comment-item" style="${indent}">
             <div style="font-size: 0.85em; color: #555; display: flex; align-items: center; gap: 8px; margin: 8px 0 8px 15px">
                 ${replyIcon}
                 <img src="${avatarUrl}" alt="avatar" style="width:24px; height:24px; border-radius:50%; object-fit:cover;">
@@ -595,11 +592,11 @@ function renderCommentsList(comments) {
                 <span style="color:#999; font-size:0.9em;">${timeDisplay}</span>
             </div>
             <p style="margin: 4px 0 1rem 3rem; white-space: pre-wrap; text-align: left;">${escapeHtml(comment.content)}</p>
-            <div class="comment-actions" style="font-size:0.9em; display:flex; gap:15px; margin: 4px 0 8px 32px;">
-                <button class="like-btn" data-id="${comment.id}" data-type="comment" style="border:none; background:none; cursor:pointer;">
+            <div class="comment-actions">
+                <button class="post-action-btn like-btn" data-id="${comment.id}" data-type="comment">
                     <i class="${heartIcon}" style="color: ${heartColor}; font-size: 1.2em;"></i> ${comment.likeCount || 0}
                 </button>
-                <button class="comment-btn reply-toggle-btn" data-id="${comment.id}" data-type="comment" style="border:none; background:none; cursor:pointer;">
+                <button class="post-action-btn comment-btn" data-id="${comment.id}" data-type="comment">
                     <i class="fa-regular fa-comment"></i> ${comment.replies ? comment.replies.length : 0}
                 </button>
                 ${deleteBtn}

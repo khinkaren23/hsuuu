@@ -2,8 +2,6 @@
 // 保存済みリスト (安定化 & 最適化)
 // ==========================================
 
-// const API_BASE_ROOT = "http://localhost:8080";
-// const IMAGE_BASE_URL = "http://localhost:8080/"; // 画像のベースURL
 // ▼▼▼ 変更後（環境に合わせて自動取得） ▼▼▼
 const API_BASE_URL = window.location.origin;
 const IMAGE_BASE_URL = window.location.origin + "/";
@@ -79,16 +77,16 @@ function renderPostHTML(post) {
         
         let rpImagesHtml = "";
         if (rp.imageUrls && rp.imageUrls.length > 0) {
-            rpImagesHtml = `<div class="post-images" style="margin-top:8px;">
+            rpImagesHtml = `<div class="post-images">
                 ${rp.imageUrls.map(url => {
                     const fullUrl = getImageUrl(url);
-                    return `<img src="${fullUrl}" alt="repost image" style="max-width:100%; border-radius:10px;">`;
+                    return `<img src="${fullUrl}" alt="repost image">`;
                 }).join("")}
             </div>`;
         }
 
         repostHtml = `
-        <div class="reposted-content" style="border: 1px solid #ddd; border-radius: 12px; padding: 12px; margin-top: 10px; background-color: #f8f9fa;">
+        <div class="reposted-content">
             <div style="font-size: 0.85em; color: #666; margin-bottom: 6px;">
                 <i class="fa-solid fa-retweet"></i> <strong>${escapeHtml(rpUser)}</strong> さんの投稿
             </div>
@@ -98,7 +96,7 @@ function renderPostHTML(post) {
         `;
     } else if (post.repostId) {
         repostHtml = `
-        <div class="reposted-content" style="border: 1px solid #ddd; border-radius: 12px; padding: 12px; margin-top: 10px; background-color: #f8f9fa; color: #888;">
+        <div class="reposted-content">
             <i class="fa-solid fa-triangle-exclamation"></i> 元の投稿は削除されたか、表示できません。
         </div>
         `;
@@ -108,11 +106,11 @@ function renderPostHTML(post) {
     const heartColor = post.likedByCurrentUser ? "#ff4d4d" : "";
 
     return `
-    <article class="post" data-id="${post.id}" style="border-bottom: 1px solid #eee; padding: 12px; cursor: pointer;">
-        <div class="post-header" style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+    <article class="post" data-id="${post.id}">
+        <div class="post-header">
             <img src="${avatarUrl}" alt="avatar" style="width:40px; height:40px; border-radius:50%; object-fit:cover;">
             <div class="user-info">
-                <a href="profile.html?userId=${post.user ? post.user.id : ''}" style="text-decoration: none; color: inherit;">
+                <a href="profile.html?userId=${post.user ? post.user.id : ''}">
                     <strong>${escapeHtml(username)}</strong>
                 </a>
                 <span style="color:#888; font-size:12px; margin-left:8px;">${timeDisplay}</span>
@@ -126,26 +124,26 @@ function renderPostHTML(post) {
 
         ${repostHtml}
 
-        <div class="post-actions" style="display:flex; gap:20px; margin-top:12px; color:#555;">
+        <div class="post-actions">
             
-            <button class="like-btn" data-id="${post.id}" data-type="post" style="background:none; border:none; cursor:pointer;">
+            <button class="post-action-btn" data-id="${post.id}" data-type="post">
                 <i class="${heartClass}" style="color: ${heartColor}"></i> ${post.likeCount || 0}
             </button>
 
-            <button class="comment-btn" data-id="${post.id}" data-type="post" style="background:none; border:none; cursor:pointer;">
+            <button class="post-action-btn" data-id="${post.id}" data-type="post">
                 <i class="fa-regular fa-comment"></i> ${post.commentCount || 0}
             </button>
 
-            <button class="repost-btn" data-id="${post.id}" style="background:none; border:none; cursor:pointer;">
+            <button class="post-action-btn" data-id="${post.id}">
                 <i class="fa-solid fa-retweet" style="${post.repostedPost ? 'color:#00ba7c;' : ''}"></i>
             </button>
 
-            <button class="bookmark-btn" data-id="${post.id}" style="background:none; border:none; cursor:pointer;">
+            <button class="post-action-btn" data-id="${post.id}">
                 <i class="${post.bookmarkedByCurrentUser ? 'fa-solid' : 'fa-regular'} fa-bookmark" style="${post.bookmarkedByCurrentUser ? 'color:#FFD700;' : ''}"></i>
             </button>
 
             ${post.user && String(post.user.id) === String(CURRENT_USER_ID) ? 
-            `<button class="delete-post-btn" data-id="${post.id}" style="background:none; border:none; cursor:pointer; color:#999;">
+            `<button class="delete-post-btn" data-id="${post.id}">
                 <i class="fa-solid fa-trash"></i>
             </button>` : ''}
             

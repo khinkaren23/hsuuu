@@ -2,8 +2,6 @@
 // いいね通知 (安定化 & 最適化)
 // ==========================================
 
-// const API_BASE_ROOT = "http://localhost:8080";
-// const IMAGE_BASE_URL = "http://localhost:8080/"; // 画像のベースURL
 // ▼▼▼ 変更後（環境に合わせて自動取得） ▼▼▼
 const API_BASE_URL = window.location.origin;
 const IMAGE_BASE_URL = window.location.origin + "/";

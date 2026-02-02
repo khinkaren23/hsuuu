@@ -2,19 +2,27 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>いいね通知 - Anispot</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <!-- <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="profile.css"> -->
-  <link rel="stylesheet" href="anispot.css" />
+    <link rel="stylesheet" href="anispot.css" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="index2.css" />
     <script defer src="like_notifications.js"></script>
   </head>
 
 
   <body>
     <header class="post-header-back">
-      <i id="backBtn" class="fa-solid fa-arrow-left"></i>
-      <h2>いいね</h2>
+        <div class="APP">
+            <div class="appname">Anispot</div>
+        </div>
+      
+    <div class="tab">
+        <div class="header-title">
+          <h3>いいね</h3>
+        </div>
+    </div>
     </header>
 
     <main class="notify-list" id="list">
@@ -22,18 +30,11 @@
     </main>
 
     <div class="bottom-nav">
+      <button class="icon" onclick="location.href='home.html'"><img src="img/a.png"></button>
       <button class="icon" onclick="location.href='index.html'"><img src="img/c.png"></button>
       <button class="icon" onclick="location.href='notifications.html'"><img src="img/d.png"></button>
       <button class="icon" onclick="location.href='account.html'"><img src="img/e.png"></button>
     </div>
-
-    <script>
-    document.getElementById("backBtn").addEventListener("click", () => {
-      window.location.href = "notifications.html";  
-    });
-    </script>
-
-
 
     <div id="postModal" class="post-modal">
       <div class="post-modal-content">

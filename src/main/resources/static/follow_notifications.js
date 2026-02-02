@@ -2,13 +2,10 @@
 // フォロー中一覧 (安定化 & 最適化)
 // ==========================================
 
-// const API_BASE_ROOT = "http://localhost:8080";
-// const IMAGE_BASE_URL = "http://localhost:8080/"; // 画像のベースURL
 // ▼▼▼ 変更後（環境に合わせて自動取得） ▼▼▼
 const API_BASE_URL = window.location.origin;
 const IMAGE_BASE_URL = window.location.origin + "/";
-const CURRENT_USER_ID = "1aVxtG72jiGR1SinFNR6"; // App.jsと統一
-
+const CURRENT_USER_ID = "1aVxtG72jiGR1SinFNR6";
 // 画像パスを綺麗にする関数（強化版）
 function getImageUrl(path) {
     // null, undefined, 文字列の"null", "/null" をすべて弾く
@@ -74,10 +71,8 @@ async function loadFollowing() {
       item.innerHTML = `
         <img src="${avatarUrl}" class="avatar" alt="${name}">
         <div class="notify-content">
-          <div class="notify-header">
-            <span class="name">${name}</span>
-          </div>
-          <div class="text">あなたをフォローしました</div>
+          <span class="name">${name}</span>
+          <span class="text">をフォローしました</span>
         </div>
       `;
       container.appendChild(item);

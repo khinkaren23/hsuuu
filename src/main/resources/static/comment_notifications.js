@@ -2,8 +2,6 @@
 // コメント通知 (安定化 & 最適化)
 // ==========================================
 
-// const API_BASE_ROOT = "http://localhost:8080";
-// const IMAGE_BASE_URL = "http://localhost:8080/"; // 画像のベースURL
 // ▼▼▼ 変更後（環境に合わせて自動取得） ▼▼▼
 const API_BASE_URL = window.location.origin;
 const IMAGE_BASE_URL = window.location.origin + "/";
@@ -149,16 +147,15 @@ async function loadCommentNotifications() {
       const name = escapeHtml(item.fromUserName);
       const commentText = escapeHtml(item.commentText);
       const time = formatRelativeTime(item.createdAt);
-      const replyTo = escapeHtml(item.replyToUser || "Unknown");
+      // const replyTo = escapeHtml(item.replyToUser || "Unknown"); // 未使用
 
       el.innerHTML = `
       <img src="${avatarUrl}" class="avatar">
       <div class="notify-content">
         <div class="notify-header">
           <span class="name">${name}</span>
-          <span class="time">${time}</span>
+          <span class="time" style="margin-left:8px; color:#999; font-size:0.85em;">${time}</span>
         </div>
-        <div class="reply-to">返信先: @${replyTo}</div>
         <div class="text">${commentText}</div>
       </div>
     `;
