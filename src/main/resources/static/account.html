@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
   <link rel="stylesheet" href="anispot.css" />
   <link rel="stylesheet" href="index.css" />
-  <link rel="stylesheet" href="index2.css" />
     <script defer src="App.js"></script>
   </head>
 
@@ -31,16 +30,16 @@
         <p id="accountName" class="username">読み込み中...</p>
         <button class="edit-btn" id="editNameBtn">変更</button>
       </section>
-
-      <ul class="menu-list">
-        <li><a href="howto.html">このアプリの使い方</a></li>
-        <li><a href="faq.html">よくあるご質問</a></li>
-        <li><a href="contact.html">お問い合わせ</a></li>
-        <li><a href="terms.html">利用規約</a></li>
-        <li><a href="privacy.html">プライバシーポリシー</a></li>
-        <li><a href="consent.html">同意事項</a></li>
-        <li><a href="about.html">その他の情報</a></li>
-      </ul>
+     
+      <main class="menu-list">
+        <div class="menu-item" onclick="location.href='howto.html'">このアプリの使い方</div>
+        <div class="menu-item" onclick="location.href='faq.html'">よくあるご質問</div>
+        <div class="menu-item" onclick="location.href='contact.html'">お問い合わせ</div>
+        <div class="menu-item" onclick="location.href='terms.html'">利用規約</div>
+        <div class="menu-item" onclick="location.href='privacy.html'">プライバシーポリシー</div>
+        <div class="menu-item" onclick="location.href='consent.html'">同意事項</div>
+        <div class="menu-item" onclick="location.href='about.html'">その他の情報</div>
+      </main>
       <div class="button-container">
           <a href="login.html" class="login-button">ログイン</a>
       </div>

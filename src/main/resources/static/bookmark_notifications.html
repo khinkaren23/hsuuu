@@ -7,8 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
   <link rel="stylesheet" href="anispot.css" />
   <link rel="stylesheet" href="index.css" />
-  <link rel="stylesheet" href="index2.css" />
-  <script defer src="bookmark_notifications.js"></script>
+  <script type="module" defer src="bookmark_notifications.js"></script>
 </head>
 
 
@@ -20,6 +19,9 @@
   </div>
 
   <div class="tab">
+        <button class="back-btn" onclick="history.back()">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
       <div class="header-title">
         <h3>保存済みリスト</h3>
       </div>
@@ -31,7 +33,6 @@
 </main>
 
 <div class="bottom-nav">
-    
       <button class="icon" onclick="location.href='index.html'"><img src="img/c.png"></button>
       <button class="icon" onclick="location.href='notifications.html'"><img src="img/d.png"></button>
       <button class="icon" onclick="location.href='account.html'"><img src="img/e.png"></button>
@@ -42,6 +43,47 @@
     <img id="modalImage" src="" class="modal-image">
     <p id="modalCaption" class="modal-caption"></p>
     <p id="modalUser" class="modal-user"></p>
+  </div>
+</div>
+
+
+
+<!-- hidden inputs + モーダル群 -->
+<input type="file" id="imagePicker" accept="image/*" multiple style="display:none" />
+<input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none">
+
+<!-- リポスト（シェア）モーダル -->
+<div id="repostModal" class="modal">
+  <div class="modal-content">
+    <h3>リポスト</h3>
+    <p>この投稿をリポストしますか？</p>
+    <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
+      <button id="confirmRepostBtn">はい</button>
+      <button id="cancelRepostBtn">キャンセル</button>
+    </div>
+  </div>
+</div>
+<!-- 📌 投稿削除モーダル（追加した部分） -->
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+    <h3>投稿を削除</h3>
+    <p>この投稿を削除しますか？</p>
+    <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
+      <button id="confirmDeleteBtn">削除</button>
+      <button id="cancelDeleteBtn">キャンセル</button>
+    </div>
+  </div>
+</div>
+<!-- コメントモーダル -->
+<div id="commentModal" class="modal">
+  <div class="modal-content" id="commentModalContent">
+    <h3>コメントを入力</h3>
+    <textarea id="commentText" placeholder="コメントを入力..."></textarea>
+    <div class="modal-actions">
+      <button id="sendComment">送信</button>
+      <button id="closeModal">閉じる</button>
+    </div>
+    <div id="commentList"></div>
   </div>
 </div>
 

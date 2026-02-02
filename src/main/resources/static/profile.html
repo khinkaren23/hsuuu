@@ -6,8 +6,6 @@
   <title>プロフィール</title>
   <link rel="stylesheet" href="anispot.css" />
     <link rel="stylesheet" href="index.css" />
-  <link rel="stylesheet" href="index2.css" />
-  <!-- <link rel="stylesheet" href="profile.css"> -->
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -21,6 +19,9 @@
     </div>
     
     <div class="tab">
+        <button class="back-btn" onclick="history.back()">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
         <div class="header-title">
           <h3>プロフィール</h3>
         </div>
@@ -100,11 +101,10 @@
 
 
 
-  <script src="profile.js"></script>
+  <script type="module" src="profile.js"></script>
 
   
     <div class="bottom-nav">
-     
       <button class="icon" onclick="location.href='index.html'"><img src="img/c.png"></button>
       <button class="icon" onclick="location.href='notifications.html'"><img src="img/d.png"></button>
       <button class="icon" onclick="location.href='account.html'"><img src="img/e.png"></button>

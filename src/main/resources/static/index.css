@@ -9,6 +9,24 @@
   font-size: 15px;
   margin: 1em 0 1px;
 }
+.back-btn {
+  font-size: 20px;
+  margin: 0.5em 0 1px;
+  position: absolute;
+  left: 15px;
+  background: none;
+  border: none;
+  color: #2164d6;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-btn:active {
+  opacity: 0.6;
+}
 
 
 
@@ -217,7 +235,7 @@
 .menu-list {
   list-style-type: none;
 }
-.menu-list li {
+.menu-list .menu-item {
   background: #fff;
   border-radius: 12px;
   padding: 20px 20px;
@@ -227,6 +245,7 @@
   gap: 14px;
   font-size: 17px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  display: block;
 }
 .menu-list li a {
   text-decoration: none;
@@ -234,11 +253,11 @@
 }
 #account .login-button {
   display: block;
-  margin: 22px 7em 0;
+  margin: 22px 6em 0;
   background: #ff7b00;
   color: #fff;
   border: none;
-  padding: 14px 36px;
+  padding: 14px 30px;
   border-radius: 24px;
   font-size: 1.2rem;
   cursor: pointer;
@@ -810,17 +829,6 @@
 
 
 /* .html */
-
-    /* #index header .tabs,
-    #notifications header .tabs,
-    #account header .tabs,
-    #post header .tabs 
-    {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      font-size: 15px;
-    } */
     #index header .tabs{
       display: flex;
       justify-content: center;
@@ -835,15 +843,6 @@
       cursor: pointer;
       color: #555;
     }
-
-    /* #index header .tabs span.active,
-    #notifications header .tabs span.active,
-    #account header .tabs span.active,
-    #post header .tabs span.active {
-      color: #ff7b00;
-      border-bottom: 2px solid #ff7b00;
-      padding-bottom: 4px;
-    } */
 
     /* 投稿入力エリアを画面いっぱいに広げる */
     body.post-page .post-input {
