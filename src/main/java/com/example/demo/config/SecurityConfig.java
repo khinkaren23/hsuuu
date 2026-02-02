@@ -1,7 +1,9 @@
 package com.example.demo.config;
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -9,7 +11,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -18,37 +20,39 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            // 開発用のためCSRF保護を無効化（POSTリクエストを通すため）
             .csrf(csrf -> csrf.disable())
-            // CORS設定を適用
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(auth -> auth
-                // ▼【重要】静的リソース（HTML, CSS, JS, 画像）を全て許可
-                // "/**" は強力すぎるため、具体的な拡張子やフォルダで指定します
+
+                // ✅ ALWAYS allow preflight
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
+                // ✅ Allow static resources served by Spring Boot (CSS/JS/images, etc.)
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+
+                // ✅ Allow your HTML pages and root
                 .requestMatchers(
-                    "/", 
-                    "/index.html", 
-                    "/*.html",      // すべてのHTMLファイル
-                    "/*.css",       // すべてのCSSファイル
-                    "/*.js",        // すべてのJSファイル
-                    "/img/**",      // imgフォルダの中身
-                    "/uploads/**",  // アップロード画像
-                    "/favicon.ico",  // アイコン
-                    "/error"        // エラーページ
+                    "/", "/index.html",
+                    "/*.html",
+                    "/*.css",
+                    "/*.js",
+                    "/img/**",
+                    "/uploads/**",
+                    "/favicon.ico",
+                    "/error"
                 ).permitAll()
-                
-                // ▼ APIエンドポイントもテスト用に許可
+
+                // ✅ Your API endpoints (you currently allow all for testing)
                 .requestMatchers(
-                    "/signup", 
-                    "/login", 
-                    "/posts/**",    // 投稿関連のAPI全て
-                    "/users/**",    // ユーザー関連のAPI全て
-                    "/comments/**", // コメント関連
-                    "/likes/**",    // いいね関連
+                    "/signup",
+                    "/login",
+                    "/posts/**",
+                    "/users/**",
+                    "/comments/**",
+                    "/likes/**",
                     "/api/**"
                 ).permitAll()
-                
-                // 上記以外は認証が必要
+
                 .anyRequest().authenticated()
             );
 
@@ -57,16 +61,18 @@ public class SecurityConfig {
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();// ▼【修正】 "http://127.0.0.1:5500" を追加しました
-        configuration.setAllowedOrigins(Arrays.asList(
-            "http://localhost:3000", 
-            "http://localhost:8080", 
-            "http://10.0.2.2:8080",
-            "http://127.0.0.1:5500"  // <--- これを追加！
+        CorsConfiguration configuration = new CorsConfiguration();
+
+        // ✅ Allow local dev + Railway domain
+        configuration.setAllowedOriginPatterns(List.of(
+            "http://localhost:*",
+            "http://127.0.0.1:*",
+            "http://10.0.2.2:*",
+            "https://*.railway.app"
         ));
-        
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
+
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
